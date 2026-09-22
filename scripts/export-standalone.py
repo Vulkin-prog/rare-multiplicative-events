@@ -48,6 +48,8 @@ selected.querySelectorAll('[src],link[rel="icon"]').forEach(el=>{const attr=el.h
 document.documentElement.lang=selected.documentElement.lang;document.head.replaceChildren(...selected.head.childNodes);document.body.replaceChildren(...selected.body.childNodes);document.body.id=selected.body.id;for(const attr of [...selected.body.attributes])document.body.setAttribute(attr.name,attr.value);window.CORPUS_OFFLINE=true;
 const blobs=new Map();
 function routeURL(file,hash=''){return '?view='+encodeURIComponent(routeFiles[file])+'&theme='+encodeURIComponent(document.documentElement.dataset.theme||'light')+hash;}
+// Reading helpers can create document links after the initial rewrite.
+window.CorpusOfflineRoute=routeURL;
 for(const a of document.querySelectorAll('a[href]')){
  const href=a.getAttribute('href'),parts=href.split('#'),file=parts[0],hash=parts.length>1?'#'+parts.slice(1).join('#'):'';
  if(routeFiles[file]){a.href=routeURL(file,hash);a.removeAttribute('target');}

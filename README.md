@@ -92,5 +92,8 @@ The `docs/` files derive from source commit `b952d051bfddf0fdc780a47ce8e812799af
 - Enlarge a figure as a frozen SVG snapshot, zoom and scroll; export the snapshot with computed colors and parameter metadata. HTML legends outside the SVG are not included.
 - Scientific slider values announced through `aria-valuetext`, plus three-case presets in the shared-source and moving-phase figures.
 - A source selector on the Sources page opens one of seven verified Zenodo PDF previews at a physical PDF page. Companion and manuscript are distinct. PDF downloads remain on Zenodo.
+- Optional three-step explorations explain what to change, keep fixed and observe in the fixed-strip, Gaussian-compression and spatial-window experiments. Advancing a reading step never changes a parameter or redraws a sample.
+- Shared experiments link directly between research and intuition views. These links locate the same model but start with the destination's default settings.
+- A searchable bilingual glossary stays on the current page. Existing overview and chapter glossaries gain search; other pages use a native dialog with keyboard dismissal and focus restoration.
 
 These enhancements also ship in the regenerated standalone HTML. Reading, figures and SVG export work locally; the source reader requires internet access.

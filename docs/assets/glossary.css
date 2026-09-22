@@ -1,0 +1,23 @@
+/* Uses corpus theme tokens and leaves the existing no-JS glossary links intact. */
+.quick-glossary-open,.quick-glossary-close,.quick-glossary-clear{min-height:44px;padding:8px 12px;border:1px solid var(--corpus-line);border-radius:6px;background:var(--corpus-page);color:var(--corpus-ink);font:500 .86rem/1.4 system-ui,sans-serif;cursor:pointer}
+.quick-glossary-open{color:var(--corpus-blue);background:transparent;white-space:nowrap}
+.quick-glossary-open:hover,.quick-glossary-close:hover,.quick-glossary-clear:not(:disabled):hover{border-color:var(--corpus-blue);background:var(--corpus-soft)}
+.quick-glossary-clear:disabled{opacity:.55;cursor:default}
+dialog.quick-glossary-dialog{box-sizing:border-box;width:min(720px,calc(100vw - 32px));max-height:85vh;max-height:85dvh;padding:24px;margin:auto;border:1px solid var(--corpus-line);border-radius:12px;background:var(--corpus-page);color:var(--corpus-ink);box-shadow:0 24px 80px #07122550;overflow:auto;overscroll-behavior:contain;font:16px/1.65 system-ui,sans-serif}
+dialog.quick-glossary-dialog::backdrop{background:#071225a6}
+.quick-glossary-heading{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.quick-glossary-heading h2{margin:0;color:var(--corpus-ink);font:500 1.65rem/1.2 Georgia,serif;letter-spacing:0}
+.quick-glossary-close{flex-shrink:0}
+.quick-glossary-intro{margin:12px 0 16px;font-size:.93rem;color:var(--corpus-muted)}
+.quick-glossary-search{margin:12px 0 18px;font:400 .9rem/1.5 system-ui,sans-serif;color:var(--corpus-ink)}
+.quick-glossary-search>label{display:block;font-weight:600;margin-bottom:7px}
+.quick-glossary-search-row{display:flex;align-items:stretch;gap:8px}
+.quick-glossary-search input{box-sizing:border-box;min-width:0;width:100%;min-height:44px;padding:9px 12px;border:1px solid var(--corpus-line);border-radius:6px;background:var(--corpus-page);color:var(--corpus-ink);font:inherit;font-size:16px}
+.quick-glossary-search .quick-glossary-count{margin:8px 0 0;font-size:.83rem;color:var(--corpus-muted);min-height:1.5em}
+.quick-glossary-entry{padding:17px 0;border-top:1px solid var(--corpus-line)}
+.quick-glossary-entry h3{font:600 1rem/1.45 system-ui,sans-serif;letter-spacing:0;margin:0 0 7px;color:var(--corpus-ink)}
+.quick-glossary-entry p{font:400 .93rem/1.7 system-ui,sans-serif;color:var(--corpus-muted);margin:0;overflow-wrap:anywhere}
+.quick-glossary-host [hidden]{display:none!important}
+.quick-glossary-host button:focus-visible,.quick-glossary-host input:focus-visible,.quick-glossary-open:focus-visible{outline:3px solid var(--corpus-blue);outline-offset:3px}
+@media(max-width:480px){dialog.quick-glossary-dialog{padding:18px;width:calc(100vw - 20px);max-height:90vh;max-height:90dvh}.quick-glossary-heading{align-items:flex-start;gap:10px}.quick-glossary-heading h2{font-size:1.45rem}.quick-glossary-clear{padding:8px 10px}}
+@media print{.quick-glossary-open,.quick-glossary-search,dialog.quick-glossary-dialog{display:none!important}}

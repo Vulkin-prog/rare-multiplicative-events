@@ -144,6 +144,13 @@
   }));
 
   const offline = Boolean(window.CORPUS_OFFLINE) || location.protocol === 'file:';
+  // Only these experiments exist in both reading views. Other figure numbers
+  // are local to a page and must never be assumed to identify the same model.
+  const sharedFigures = new Set(['two-window-lab', 'empirical-lab', 'compression-lab',
+    'prime-lab', 'source-resolution-lab', 'erasure-lab', 'resolution-lab',
+    'displacement-lab', 'window-lab']);
+  const otherLevel = document.querySelector('.corpus-level a');
+  const guided = /intuition/i.test(document.querySelector('.corpus-level [aria-current="page"]')?.textContent || '');
   figures.forEach(({ target, label }) => {
     const header = target.querySelector('.experiment-header,.experiment-heading') || target;
     const tools = make('div', 'reading-figure-tools');
@@ -158,7 +165,14 @@
     const field = make('input'); field.type = 'text'; field.readOnly = true;
     field.setAttribute('aria-label', offline ? t('Figure anchor', 'Repère de la figure') : t('Figure address', 'Adresse de la figure'));
     fieldLabel.append(field); fallback.append(fieldLabel);
-    tools.append(button, status, fallback); header.append(tools);
+    tools.append(button);
+    if (otherLevel && sharedFigures.has(target.id)) {
+      const bridge = make('a', 'reading-level-link', guided ? t('Result and assumptions', 'Résultat et hypothèses · EN') : t('Explain this experiment', 'Comprendre cette expérience'));
+      bridge.setAttribute('href', otherLevel.getAttribute('href').split('#')[0] + '#' + target.id);
+      bridge.title = t('Same experiment in the other reading view; settings start at their defaults.', 'La même expérience dans l’autre parcours ; les réglages reprennent leurs valeurs initiales.');
+      tools.append(bridge);
+    }
+    tools.append(status, fallback); header.append(tools);
     let clearStatus;
     button.addEventListener('click', async () => {
       const fragment = '#' + encodeURIComponent(target.id);

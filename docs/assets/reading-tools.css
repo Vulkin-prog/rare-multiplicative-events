@@ -29,6 +29,10 @@
 .experiment-heading:has(>.reading-figure-tools){flex-wrap:wrap}
 .reading-copy-link{display:inline-flex;align-items:center;min-height:36px;padding:5px 0;border:0;border-radius:2px;background:transparent;color:var(--corpus-blue);font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--corpus-line)}
 .reading-copy-link:hover{text-decoration-color:currentColor}
+.reading-level-link{display:inline-flex;align-items:center;min-height:36px;padding:5px 0;color:var(--corpus-blue);font:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--corpus-line)}
+.reading-level-link:hover{text-decoration-color:currentColor}
+.reading-level-link:focus-visible{outline:3px solid var(--corpus-blue);outline-offset:3px}
+@media(max-width:590px){.reading-level-link{min-height:44px}}
 .reading-copy-status{font-size:.78rem;color:var(--corpus-muted)}
 .reading-copy-fallback{flex-basis:100%;min-width:0;max-width:100%}
 .reading-copy-fallback[hidden]{display:none}
