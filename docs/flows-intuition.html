@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#1949c6" name="theme-color"/>
+<title>Lattice Poisson Flows · Parcours guidé · Brice Pouly</title>
+<meta content="Cette page suit les événements rares : records, temps passé en tête et changements d’échelle. Paper C fournit la comparaison arithmétique sur laquelle ces résultats reposent." name="description"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<script src="assets/appearance.js"></script><link href="assets/style.css" rel="stylesheet"/>
+<link href="assets/katex/katex.min.css" rel="stylesheet"/>
+<script defer="" src="assets/katex/katex.min.js"></script><script defer="" src="assets/language.js"></script><script defer="" src="assets/math-render.js"></script><script defer="" src="assets/math.js"></script><script defer="" src="assets/app.js"></script>
+<link href="assets/learning.css" rel="stylesheet"/>
+<script defer="" src="assets/learning.js"></script>
+<link href="assets/journey.css" rel="stylesheet"/><script defer="" src="assets/journey.js"></script><link href="assets/appearance.css" rel="stylesheet"/><link href="flows-intuition.html" hreflang="fr" rel="alternate"/><link href="flows-intuition-en.html" hreflang="en" rel="alternate"/><link href="assets/guided-connections.css" rel="stylesheet"/><link href="assets/corpus.css" rel="stylesheet"/><script defer="" src="assets/corpus.js"></script><link href="assets/corpus-labs.css" rel="stylesheet"/><script defer="" src="assets/corpus-labs-math.js"></script><script defer="" src="assets/flow-compression-math.js"></script><script defer="" src="assets/corpus-labs.js"></script></head>
+<body id="haut">
+<a class="skip" href="c-intuition.html#construire">Aller au parcours</a>
+<header class="corpus-header"><div class="corpus-shell corpus-top"><a class="corpus-brand" href="overview-intuition.html"><b aria-hidden="true">±</b><span>L’arithmétique du hasard<small>Brice Pouly · Corpus de recherche</small></span></a><nav aria-label="Navigation du corpus" class="corpus-primary"><a href="overview-intuition.html">Vue d’ensemble</a><details class="corpus-papers has-active"><summary>Les 4 papiers</summary><div class="corpus-menu"><a href="c-intuition.html"><b>Paper C · V3</b><span>Longues séries et mots rares</span></a><a aria-current="page" href="flows-intuition.html"><b>Lattice Poisson Flows · V2</b><span>Records, horloges et limites gaussiennes</span></a><a href="clusters-intuition.html"><b>Arithmetic Clusters · V1</b><span>Sources premières et environnements fixes</span></a><a href="environments-intuition.html"><b>Moving Prime Environments · V1</b><span>Phases mobiles et groupes visibles</span></a></div></details><a href="sources.html">Sources et Lean</a></nav><button aria-label="Changer de thème" aria-pressed="false" class="theme-toggle" id="theme-toggle" title="Changer de thème" type="button"><svg aria-hidden="true" class="moon-icon" viewbox="0 0 24 24"><path d="M20.8 13.1A8.7 8.7 0 0 1 10.9 3.2 8.9 8.9 0 1 0 20.8 13.1Z"></path></svg><svg aria-hidden="true" class="sun-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div></header><div class="corpus-location"><div class="corpus-shell"><nav aria-label="Breadcrumb" class="corpus-breadcrumb"><a href="overview-intuition.html">Corpus</a><span>/</span><strong>Lattice Poisson Flows · V2</strong></nav><div class="corpus-read-controls"><nav aria-label="Niveau de lecture" class="corpus-level"><a href="flows.html">Recherche · EN</a><span aria-current="page">Intuition</span></nav><nav aria-label="Langue / Language" class="corpus-language"><a data-language-link="" data-language-page="flows-intuition-en.html" href="flows-intuition-en.html" lang="en">EN</a><span aria-current="page">FR</span></nav></div></div></div><main id="main">
+<div class="intro wrap"><div><p class="eyebrow">LPF V2 · Suivre l’histoire</p><h1>Quand un événement rare<br/>devient un record.</h1></div><div class="intro-note"><p>Une longue série de signes identiques peut prendre la tête, la garder, puis être dépassée. Pour raconter cette histoire, il faut préciser quand le record devient visible et quelle horloge mesure sa durée.</p><a class="button primary" href="#records">Découvrir le premier record</a></div></div><div class="wrap"><aside class="scope-note"><p>Cette page suit les événements rares : records, temps passé en tête et changements d’échelle. Paper C fournit la comparaison arithmétique sur laquelle ces résultats reposent.</p></aside></div>
+<nav aria-label="Navigation dans le parcours" class="chapter-nav"><div class="reading-toolbar wrap"><details class="contents-menu" id="contents-menu"><summary aria-label="Sommaire du parcours"><span class="current-step" id="current-step">01 / 02</span><span class="current-title" id="current-title">Un record se découvre en chemin.</span><span class="contents-label">Sommaire</span><span aria-hidden="true" class="menu-chevron">⌄</span></summary><div class="contents-panel"><div class="contents-group"><a href="#records"><b>01</b><span>Un record se découvre en chemin.</span></a><a href="#flots"><b>02</b><span>Des arrivées, des départs, puis une cloche.</span></a></div><div class="contents-footer"><button class="text-button" data-open-glossary="" type="button">Ouvrir le lexique</button><label class="depth-control"><input id="expert-mode" type="checkbox"/><span aria-hidden="true" class="switch-track"></span><span>Tout approfondir</span></label></div></div></details><div class="reading-options"><button class="text-button toolbar-lexicon" data-open-glossary="" type="button">Lexique</button></div></div><div aria-hidden="true" class="reading-track"><span id="reading-progress"></span></div></nav>
+<noscript><p class="wrap notice">Activez JavaScript pour manipuler les figures. Les explications et les liens vers les articles restent disponibles.</p></noscript>
+<section aria-labelledby="h-records" class="chapter wrap" data-chapter-title="Un record se découvre en chemin." id="records">
+<div class="section-heading">
+<span class="section-number">01 /</span><div>
+<p class="eyebrow">Des points rares à une histoire</p>
+<h2 id="h-records">Un record se découvre en chemin.</h2>
+</div>
+</div><p class="chapter-question">À quel moment sait-on vraiment qu’un record vient d’être battu ?</p>
+<div class="section-intro">
+<p class="lead">Imaginez un tableau des meilleurs scores. Une série de 7 cases bat le précédent record de 4. Une autre série de 7 l’égale : le premier détenteur garde son titre. Une série de 11 le bat de nouveau.</p>
+<p>Passer de 7 à 11 crée <strong>un seul nouvel épisode record</strong>, même si la nouvelle série est plus longue de quatre cases. Et quand on lit la suite case après case, on ne sait pas encore où elle s’arrêtera : il faut voir sa huitième case pour reconnaître qu’elle bat 7.</p>
+<p>Le second article étudie cette histoire : combien de fois le record change, quel signe le détient, et combien de temps il reste en tête.</p>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">LABO 06 · CE QU’UN OBSERVATEUR VOIT VRAIMENT</span><button class="button small" id="record-play">Lire l’histoire ▶</button>
+<span class="badge">Exemple construit</span></div>
+<div aria-label="Moments clés de l’histoire" class="scene-presets" role="group"><button class="scene-button" data-record-at="13"><span>1</span>Un record de 7</button><button class="scene-button" data-record-at="20"><span>2</span>Une égalité à 7</button><button class="scene-button" data-record-at="28"><span>3</span>Le huitième signe</button></div><label class="range-label">Nombre de signes déjà lus <output id="record-prefix-value">16</output><input id="record-prefix" max="39" min="1" type="range" value="16"/></label><div aria-label="Suite de 39 signes, regroupés en six plages. Le gris indique les signes non encore lus. Faites défiler horizontalement pour voir la suite." class="record-tape" id="record-tape" role="img" tabindex="0"></div>
+<div class="stat-row">
+<div>
+<strong id="record-maximum"></strong><span>maximum visible</span>
+</div>
+<div>
+<strong id="record-holder"></strong><span>signe du premier détenteur</span>
+</div>
+<div>
+<strong id="record-episodes"></strong><span>épisodes records reconnus</span>
+</div>
+</div>
+<div aria-label="Maximum visible et records reconnus au fil du préfixe" class="chart" id="record-chart" role="img"></div>
+<p aria-live="polite" id="record-reading"></p>
+<p class="micro">Exemple déterministe de plages maximales alternées : 4+, 2−, 7+, 7−, 11+, 8−. Il illustre la définition ; il ne s’agit pas d’un échantillon de la fonction multiplicative. La plage de 11 est reconnue comme record à son huitième signe.</p>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>Compter les minutes… ou les doublements ?</h3>
+<p>Imaginez suivre un match de la minute 1 à la minute 64. Un camp qui mène entre les minutes 32 et 64 domine plus de la moitié de la durée observée, même s’il ne menait pas au début.</p>
+<p>On peut choisir une autre horloge : donner la même importance à 1–2, 2–4, 4–8, 8–16, 16–32 et 32–64. Chaque période correspond alors à un doublement. La dernière n’en représente qu’une sur six.</p>
+<p>Appliquée aux détenteurs de records, cette distinction change le résultat. Sur de longues fenêtres admissibles, le temps mesuré en doublements se partage à moitié entre les signes + et −. Le temps ordinaire conserve au contraire une part variable d’une histoire à l’autre : une domination tardive peut peser très lourd.</p>
+<p>Cette dernière loi garde aussi une légère dépendance à la phase entre deux doublements.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Flots de Poisson · théorème 6.1, p. 22 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">LES DEUX HORLOGES</span></div>
+<p>Choisissez + ou − pour le détenteur du record pendant chaque période.</p>
+<p class="try-this"><strong>Essayez le dernier intervalle.</strong> Inversez le signe entre 32 et 64 et comparez les deux barres.</p><div class="clock-controls arrow-navigation" id="clock-controls"></div>
+<div id="clock-bars"></div>
+<p aria-live="polite" id="clock-reading"></p>
+<p class="micro">Histoire schématique à 6 doublements, pour visualiser les pondérations. Les signes sont éditables ; le théorème porte sur le processus aléatoire transféré depuis le champ arithmétique, pas sur toutes les histoires possibles.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-8"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Le résultat phare des records : une limite jointe</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Sur une fenêtre de <span class="inline-math">T</span> doublements, <span class="inline-math">N</span> compte les épisodes records globaux, <span class="inline-math">D=N⁺−N⁻</span> et <span class="inline-math">A</span> intègre le signe du premier détenteur en temps logarithmique. Sous les hypothèses de transfert par coquilles du théorème 2.3 et de population initiale :</p>
+<div class="formula" data-tex="\frac{1}{\sqrt T}\begin{pmatrix}N(Tt)-Tt/2\\D(Tt)\\A(Tt)\end{pmatrix}\Longrightarrow B_{\Sigma}(t).">((N(Tt)−Tt/2), D(Tt), A(Tt)) / √T ⇒ B<sub>Σ</sub>(t).</div>
+<div class="matrix-wrap">
+<div class="formula matrix-formula" data-tex="\Sigma=\begin{pmatrix}\frac14&amp;0&amp;0\\0&amp;\frac12&amp;1\\0&amp;1&amp;\frac{\pi^2}{6(\log 2)^2}\end{pmatrix}"><span>Σ, dans l’ordre (N, D, A)</span></div>
+<p>En particulier, les fluctuations du déséquilibre signé et du temps de leadership sont corrélées. Le taux moyen 1/2 par doublement ne fait pas du comptage des records entiers un processus de Poisson.</p>
+</div>
+<p>Les compteurs commencent à zéro sur une fenêtre tardive de T doublements, avec T→∞, mais le maximum antérieur et son détenteur ne sont pas remis à zéro. Les conditions comprennent une population initiale retenue <span class="inline-math">Λ2<sup>−T</sup>→∞</span> et des coquilles de largeur h avec Th→0, ainsi que les bornes de transfert du théorème 2.3. Aucune sous-suite de phase n’est nécessaire pour cette histoire brownienne. Elle est asymptotiquement indépendante du <em>champ terminal entier</em>. Le maximum terminal et le signe de son détenteur restent des fonctions de ce même champ, donc ne sont pas annoncés indépendants entre eux.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Flots de Poisson · vue d’ensemble (1.3)–(1.7), pp. 3–4 ↗</a></div></details>
+<details class="expert-panel" id="approfondissement-9"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Pourquoi les coquilles et pourquoi M₁ ?</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>LPF V2 utilise le champ signé complet de C V3 : positions, longueurs exactes et signes réels sont conservés, sous le budget d’information du théorème. Les lois de records conservent leurs propres conditions d’horizon et de censure.</p>
+<p>Un saut de longueur finale peut apparaître comme plusieurs petites marches très rapprochées lorsque l’on ne voit qu’un préfixe fini. La topologie M₁ permet cette réunion de marches ; J₁ exige une correspondance plus stricte des sauts. Pour l’occupation physique, la loi limite est une famille indexée par la phase θ={log₂n}, le long des sous-suites où θ converge. Cette sélection de phase concerne le bloc terminal, pas l’histoire brownienne. Le maximum visible converge en M₁ scalaire et n’est pas tendu en J₁ ; le signe du premier détenteur converge en J₁ scalaire.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Flots de Poisson · §4, p. 16 ↗</a></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>Un record se reconnaît quand il dépasse le précédent.</p></div><div class="next-chapter"><p>Nous avons suivi une histoire case par case. Élargissons maintenant le cadre pour voir comment les points entrent dans le comptage et en sortent.</p><a href="#flots">Voir le cadre évoluer<span aria-hidden="true">→</span></a></div></div></section>
+<section aria-labelledby="h-flots" class="chapter tinted" data-chapter-title="Des arrivées, des départs, puis une cloche." id="flots"><div class="wrap">
+<div class="section-heading">
+<span class="section-number">02 /</span><div>
+<p class="eyebrow">Changer d’échelle, conserver une géométrie</p>
+<h2 id="h-flots">Des arrivées, des départs, puis une cloche.</h2>
+</div>
+</div><p class="chapter-question">Que devient notre nuage de points quand le cadre d’observation change ?</p>
+<div class="geometry-experiment">
+<div class="geometry-intro">
+<p class="eyebrow">Un même nuage, deux mouvements</p>
+<h3>Les points restent.<br/>Le cadre se déplace.</h3>
+<p>Dans le chapitre Poisson de Paper C, chaque point gardait la position et la longueur d’une série. Voici une représentation continue du modèle : on compte les points dans un cadre. <strong>Les points restent en place ; seul le cadre bouge.</strong> À gauche, on devient plus exigeant. À droite, on observe aussi plus loin.</p>
+</div>
+<div class="geometry-panel">
+<div class="experiment-heading">
+<span class="figure-label">EXPLORER LA GÉOMÉTRIE DU FLOT</span><div class="geometry-buttons">
+<button class="button small" id="geometry-reset">Nouveau nuage ↻</button><button class="button primary small" id="geometry-play">Animer les cadres ▶</button>
+</div>
+</div>
+<p class="try-this"><strong>Avancez d’un doublement.</strong> À gauche, la hauteur est divisée par deux. À droite, la largeur double aussi : l’aire reste la même.</p><div class="controls two">
+<label>Nombre moyen initial c<select id="geometry-c"><option value="2">2</option>
+<option selected="" value="8">8</option>
+<option value="32">32</option></select></label><label>Temps en doublements <output id="geometry-t-value">0</output><input id="geometry-t" max="200" min="0" type="range" value="0"/></label>
+</div>
+<div aria-label="Positions du cadre" class="scene-presets geometry-stops" role="group"><button class="scene-button" data-geometry-at="0">Au départ</button><button class="scene-button" data-geometry-at="100">Un doublement</button><button class="scene-button" data-geometry-at="200">Deux doublements</button></div><p class="micro">La hauteur sert ici à sélectionner les points : ce n’est pas la longueur d’une série. Plus l’exigence augmente, plus le cadre s’abaisse. Les dessins utilisent une interpolation du modèle de comparaison.</p><div class="geometry-panes">
+<div>
+<div class="pane-title">
+<h4>Relever le seuil</h4>
+<p>Le cadre rétrécit.</p>
+</div>
+<div aria-label="Cadre de largeur fixe et de hauteur décroissante" class="chart" id="geometry-threshold" role="img"></div>
+<p class="pane-stat"><strong id="geometry-count-threshold">—</strong> points présents <span id="geometry-mean-threshold"></span></p>
+</div>
+<div>
+<div class="pane-title">
+<h4>Suivre l’échelle</h4>
+<p>Il s’élargit et s’abaisse à la fois.</p>
+</div>
+<div aria-label="Cadre qui s’élargit tout en gardant la même aire" class="chart" id="geometry-scale" role="img"></div>
+<p class="pane-stat"><strong id="geometry-count-scale">—</strong> points présents <span id="geometry-mean-scale"></span></p>
+</div>
+</div>
+<div class="geometry-legend">
+<span><i class="geo-initial"></i>Déjà dans le cadre au départ</span><span><i class="geo-new"></i>Entré ensuite</span><span><i class="geo-gone"></i>Sorti du cadre</span>
+</div>
+<p aria-live="polite" class="geometry-reading" id="geometry-reading"></p>
+<p class="micro">Les deux dessins utilisent exactement les mêmes points aléatoires. Dans le mouvement de droite, l’aire du cadre reste constante : le nombre moyen reste c, mais le nombre observé fluctue. Les couleurs comparent l’instant choisi au départ ; elles ne désignent pas les signes + et −.</p>
+<details class="geometry-math"><summary>Lire les coordonnées et les formules</summary><p>Nuage de Poisson homogène d’intensité 1 dans le domaine [0,4] × [0,c]. Le paramètre s compte les doublements. La deuxième coordonnée est une hauteur auxiliaire : ce n’est pas directement la longueur entière de la série.</p>
+<div class="formula" data-tex="Q_s=(0,1]\times(0,c2^{-s}],\qquad |Q_s|=c2^{-s}">Seuil : aire c fois 2 puissance moins s.</div>
+<div class="formula" data-tex="R_s=(0,2^s]\times(0,c2^{-s}],\qquad |R_s|=c">Échelle : aire constante c.</div>
+<p>Ce modèle continu conserve l’information entière aux seuils correspondants grâce à l’interpolation canonique du §7. Le temps naturel du graphique immigration–mort est τ = (ln 2)s.</p></details>
+</div>
+</div><div class="narrative-bridge"><span>Du dessin à l’histoire</span><p>Comptez maintenant les points du cadre de droite au fil du temps. Chaque entrée fait monter le total ; chaque sortie le fait descendre. C’est ce que montre le graphique suivant, dans une autre simulation du même modèle.</p></div><div class="split below">
+<div class="prose"><h3>Compter les entrées et les sorties.</h3>
+<p class="lead">Imaginez une salle où des visiteurs arrivent, restent un certain temps, puis repartent. Le nombre de personnes présentes augmente et diminue au fil du temps.</p>
+<p>Le modèle utilisé ici suit la même règle simple : les arrivées se font au hasard, à un rythme moyen constant, et, pendant une même petite durée, chaque personne a la même probabilité de partir, quelle que soit la durée déjà passée dans la salle. Avec deux fois plus de personnes présentes, il y a deux fois plus de possibilités de départ.</p>
+<p>Le nom mathématique est <strong>processus d’immigration–mort</strong>. « Mort » signifie ici qu’un point quitte le comptage. Le graphique en montre une trajectoire : un saut vers le haut est une arrivée, un saut vers le bas un départ.</p>
+<div class="takeaway">
+<span>Le lien avec les articles</span>Cette salle est une image pour comprendre un modèle de points aléatoires. Le second article construit ce modèle en prolongeant les longueurs entières par une interpolation précise ; il ne suppose pas que notre suite arithmétique finie obéit exactement à ces arrivées et départs.</div>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">LABO 07 · IMMIGRATION ET MORT</span><button class="button small" id="flow-reset">Nouvelle trajectoire ↻</button>
+<button class="button small" id="flow-play">Lire l’histoire ▶</button>
+</div>
+<p class="try-this"><strong>Parcourez la même histoire.</strong> Une marche vers le haut ajoute un point ; une marche vers le bas en retire un.</p><div class="controls two">
+<label>Nombre moyen de points présents c<select id="flow-c"><option value="2">2</option>
+<option selected="" value="8">8</option>
+<option value="32">32</option>
+<option value="128">128</option></select></label><label>Parcourir la même histoire<output id="flow-t-value">4,0</output><input id="flow-t" max="80" min="0" type="range" value="40"/></label>
+</div>
+<div class="stat-row">
+<div>
+<strong id="flow-pop"></strong><span>points présents</span>
+</div>
+<div class="advanced-stat">
+<strong id="flow-z"></strong><span><span class="inline-math" data-tex="(X-c)/\sqrt{c}">Écart divisé par √c</span></span>
+</div>
+</div>
+<div aria-label="Trajectoire stationnaire du processus immigration–mort" class="chart" id="flow-chart" role="img"></div>
+<p class="micro">Chaque montée correspond à une arrivée ; chaque descente à un départ. Le curseur parcourt la même histoire. Ici un doublement d’échelle correspond à ln 2 ≈ 0,693 unité de temps. Ce graphique simule le modèle de comparaison.</p>
+</div>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>Comparer une petite foule et une grande foule.</h3>
+<p>Avec une moyenne de 2 personnes, compter 0, 1 ou 2 représente une grande différence. Avec une moyenne de 128, des écarts de quelques personnes sont relativement modestes.</p>
+<p>Pour comparer ces situations, on soustrait d’abord la moyenne, puis on divise l’écart par sa taille habituelle, ici la racine carrée de la moyenne. Le centre devient zéro et les fluctuations deviennent comparables.</p>
+<p>À grande moyenne, les barres se rapprochent de la célèbre <strong>courbe en cloche</strong>, celle de la loi normale ou gaussienne. Les valeurs proches dans le temps restent toutefois liées : voir une foule à un instant rend une foule probable juste après.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Flots de Poisson · §7, p. 25 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">COMPARER LES FLUCTUATIONS</span></div>
+<label class="gaussian-control">Nombre moyen de points présents c<select id="gaussian-c"><option value="2">2</option><option selected="" value="8">8</option><option value="32">32</option><option value="128">128</option></select></label><p class="try-this"><strong>Passez de 2 à 128.</strong> Les barres bleues se rapprochent de la courbe orange. Ce réglage change aussi la moyenne du graphique des arrivées et départs.</p><div aria-label="Probabilités de Poisson et de Gauss dans les mêmes intervalles normalisés" class="chart" id="gaussian-chart" role="img"></div>
+<p class="micro">Barres bleues : probabilités Poisson. Trait orange : probabilités normales intégrées sur chaque intervalle de largeur 1/√c. Les axes comparent bien des masses de probabilité, pas une masse à une densité.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-10"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Deux sections d’une même géométrie de Poisson</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Dans le plan auxiliaire, <span class="inline-math">X<sub>c</sub>(τ)=Π((0,e<sup>τ</sup>]×(0,ce<sup>−τ</sup>])</span> est stationnaire de loi <span class="inline-math">Pois(c)</span> et vérifie</p>
+<div class="formula" data-tex="\begin{aligned}X_c(\tau+\Delta)\mid X_c(\tau)=z\ \sim\;&amp;\operatorname{Bin}\!\left(z,e^{-\Delta}\right)\\&amp;+\operatorname{Pois}\!\left(c\left(1-e^{-\Delta}\right)\right).\end{aligned}">X<sub>c</sub>(τ+Δ) | X<sub>c</sub>(τ)=z  ∼  Bin(z,e<sup>−Δ</sup>) + Pois(c(1−e<sup>−Δ</sup>)).</div>
+<p>Les deux termes sont indépendants. Le générateur est <span class="inline-math">𝒜g(z)=c[g(z+1)−g(z)]+z[g(z−1)−g(z)]</span>. La section à aire constante a une limite d’Ornstein–Uhlenbeck de covariance <span class="inline-math">e<sup>−|τ−σ|</sup></span>. La section suivant le seuil, à position fixée et normalisée, donne une autre covariance : <span class="inline-math">e<sup>−|v−w|/2</sup></span>. Ces deux horloges ne sont pas interchangeables. Les vérifications des limites et de l’interpolation figurent dans le <a href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">compagnon de Flots, annexe C, pp. 9–12</a>.</p>
+<p>L’interpolation canonique utilise des marques fractionnaires auxiliaires de densité <span class="inline-math" data-tex="g(u)=2\ln(2)\,2^{-u}">g(u)=2 ln(2)·2<sup>−u</sup></span>, pour 0&lt;u&lt;1 (elles ne sont pas uniformes) ; ajouter ces marques peut créer des records dans un niveau entier ex æquo. Les théorèmes sur les records stricts entiers sont donc traités séparément.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>Un même nuage peut donner plusieurs évolutions.</p></div><div class="next-chapter"><p>Le premier article construit la comparaison avec les points aléatoires ; le second en déduit les records et les flots. Vous pouvez maintenant revenir à leurs énoncés.</p><a href="sources.html">Retrouver les résultats dans les articles<span aria-hidden="true">→</span></a></div></div></div><details class="expert-panel"><summary>Approfondir : deux façons de résumer le même nuage</summary><div class="expert-content"><article class="experiment" id="compression-lab"><div class="experiment-header"><span class="model-tag">Modèle de Poisson fini · un signe · test spatial φ = 1</span><h3>Échantillonner et intégrer le même nuage</h3><p>D relève le nombre normalisé de survivants aux seuils entiers. C l’intègre continûment. Leurs limites sont très corrélées ; comparer C à la différence D−C rend le petit résidu visible.</p></div><div class="experiment-body"><div class="control-row"><label>J : <output id="compression-j-value"></output><input id="compression-j" max="10" min="1" type="range" value="8"/></label><label>Phase θ : <output id="compression-phase-value"></output><input id="compression-phase" max="99" min="0" type="range" value="50"/></label><label>Graine<input id="compression-seed" max="4294967295" min="0" type="number" value="4117"/></label><button class="button" id="compression-run">Lancer 400 tirages Monte Carlo</button></div><p aria-live="polite" class="status" id="compression-status" role="status"></p><div class="two-charts"><div><div class="chart" id="compression-scatter"></div><p class="detail">Les ellipses représentent seulement les covariances : à J fini (bleu), à la limite (tirets). Ce ne sont pas les densités du modèle fini. Les points Monte Carlo s’ajoutent à la demande.</p></div><div class="table-scroll"><table><thead><tr><th>Moment</th><th>Fini exact</th><th>Limite</th><th>MC</th></tr></thead><tbody id="compression-table"></tbody></table></div></div><div class="stats"><div class="stat"><span>Population moyenne initiale, un signe</span><strong id="compression-population"></strong></div><div class="stat"><span>Moyenne des survivants critiques</span><strong id="compression-critical"></strong></div><div class="stat"><span>Corrélation finie : C et D−C</span><strong id="compression-residual"></strong></div></div><p aria-live="polite" class="figure-reading" id="compression-reading"></p><details><summary>Modèle, normalisation et covariance finie exacte</summary><div class="detail-body"><p>On prend une population de Poisson de moyenne μ=2^(J+θ−1) et des durées de vie exponentielles indépendantes de taux log2. Si N(t) est le total des survivants, H(t)=(N(t)−μ2⁻ᵗ)/√(μ2⁻ᵗ). C est calculé par intégration exacte des durées de vie.</p><div class="math-display formula" data-tex="D_J=J^{-1/2}\sum_{j=0}^J H(j),\quad C_J=J^{-1/2}\int_0^J H(t)\,dt.">D_J=J^{-1/2}\sum_{j=0}^J H(j),\quad C_J=J^{-1/2}\int_0^J H(t)\,dt.</div><p>Avec α=(log2)/2 et r=e⁻ᵅ, le noyau de covariance est e^(−α|t−u|), d’où<div class="math-display formula" data-tex="v_D=\frac{J+1+2\sum_{k=1}^J(J+1-k)r^k}{J},\quad v_C=\frac2\alpha-\frac{2(1-r^J)}{J\alpha^2},">v_D=\frac{J+1+2\sum_{k=1}^J(J+1-k)r^k}{J},\quad v_C=\frac2\alpha-\frac{2(1-r^J)}{J\alpha^2},</div><div class="math-display formula" data-tex="c_{DC}=\frac2{J\alpha}\left(J+1-\sum_{j=0}^Jr^j\right).">c_{DC}=\frac2{J\alpha}\left(J+1-\sum_{j=0}^Jr^j\right).</div></p><p>On simule le modèle de Poisson, pas la fonction arithmétique. Ses moments sont calculés directement. Dans la limite gaussienne jointe, C et D−C deviennent indépendants ; à J fini, une corrélation subsiste.</p><a href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Theorem 7.11 ↗</a> · <a href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Corollary 7.12 ↗</a></div></details></div></article></div></details></section>
+<div class="wrap corpus-next"><a href="flows.html"><small>Même sujet · énoncés formels</small><strong>Lattice Poisson Flows · Recherche en anglais</strong></a><a href="clusters-intuition.html"><small>Poursuivre la lecture</small><strong>Arithmetic Clusters →</strong></a></div></main>
+<dialog aria-labelledby="glossary-title" id="glossary-dialog"><div class="dialog-heading">
+<div>
+<p class="eyebrow">Les mots du parcours</p>
+<h2 id="glossary-title">Le lexique</h2>
+</div>
+<button autofocus="" class="button small" id="glossary-close">Fermer ×</button>
+</div>
+<div id="glossary-content"></div></dialog>
+<footer class="corpus-footer"><div class="corpus-shell"><p>Brice Pouly · Éditions publiques · 21 septembre 2026</p><nav aria-label="Ressources"><a href="sources.html">Sources et formalisation Lean</a><a download="arithmetique_du_hasard_autonome.html" href="arithmetique_du_hasard_autonome.html">Télécharger le site autonome</a></nav></div></footer></body>
+</html>

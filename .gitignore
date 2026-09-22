@@ -1,0 +1,3 @@
+# Manuscripts are linked from Zenodo, never stored in this repository.
+*.pdf
+__pycache__/

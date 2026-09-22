@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#1949c6" name="theme-color"/>
+<title>Lattice Poisson Flows · Intuition · Brice Pouly</title>
+<meta content="This page studies observations of the rare-run field: records, time in the lead and scale flows. Paper C provides the binary arithmetic comparison that supports them." name="description"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<script src="assets/appearance.js"></script><link href="assets/style.css" rel="stylesheet"/>
+<link href="assets/katex/katex.min.css" rel="stylesheet"/>
+<script defer="" src="assets/katex/katex.min.js"></script><script defer="" src="assets/locales/en.js"></script><script defer="" src="assets/language.js"></script><script defer="" src="assets/math-render.js"></script><script defer="" src="assets/math.js"></script><script defer="" src="assets/app.js"></script>
+<link href="assets/learning.css" rel="stylesheet"/>
+<script defer="" src="assets/learning.js"></script>
+<link href="assets/journey.css" rel="stylesheet"/><script defer="" src="assets/journey.js"></script><link href="assets/appearance.css" rel="stylesheet"/><link href="flows-intuition.html" hreflang="fr" rel="alternate"/><link href="flows-intuition-en.html" hreflang="en" rel="alternate"/><link href="assets/guided-connections.css" rel="stylesheet"/><link href="assets/corpus.css" rel="stylesheet"/><script defer="" src="assets/corpus.js"></script><link href="assets/corpus-labs.css" rel="stylesheet"/><script defer="" src="assets/corpus-labs-math.js"></script><script defer="" src="assets/flow-compression-math.js"></script><script defer="" src="assets/corpus-labs.js"></script></head>
+<body id="haut">
+<a class="skip" href="c-intuition-en.html#construire">Skip to the journey</a>
+<header class="corpus-header"><div class="corpus-shell corpus-top"><a class="corpus-brand" href="overview-intuition-en.html"><b aria-hidden="true">±</b><span>Rare multiplicative events<small>Brice Pouly · Research corpus</small></span></a><nav aria-label="Corpus navigation" class="corpus-primary"><a href="overview-intuition-en.html">Overview</a><details class="corpus-papers has-active"><summary>The 4 papers</summary><div class="corpus-menu"><a href="c-intuition-en.html"><b>Paper C · V3</b><span>Long runs &amp; rare words</span></a><a aria-current="page" href="flows-intuition-en.html"><b>Lattice Poisson Flows · V2</b><span>Records, clocks &amp; Gaussian limits</span></a><a href="clusters-intuition-en.html"><b>Arithmetic Clusters · V1</b><span>Prime sources &amp; fixed environments</span></a><a href="environments-intuition-en.html"><b>Moving Prime Environments · V1</b><span>Moving phases &amp; visible clusters</span></a></div></details><a href="sources.html">Sources &amp; Lean</a></nav><button aria-label="Toggle light / dark theme" aria-pressed="false" class="theme-toggle" id="theme-toggle" title="Toggle light / dark theme" type="button"><svg aria-hidden="true" class="moon-icon" viewbox="0 0 24 24"><path d="M20.8 13.1A8.7 8.7 0 0 1 10.9 3.2 8.9 8.9 0 1 0 20.8 13.1Z"></path></svg><svg aria-hidden="true" class="sun-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div></header><div class="corpus-location"><div class="corpus-shell"><nav aria-label="Breadcrumb" class="corpus-breadcrumb"><a href="overview-intuition-en.html">Corpus</a><span>/</span><strong>Lattice Poisson Flows · V2</strong></nav><div class="corpus-read-controls"><nav aria-label="Reading level" class="corpus-level"><a href="flows.html">Research</a><span aria-current="page">Intuition</span></nav><nav aria-label="Langue / Language" class="corpus-language"><span aria-current="page">EN</span><a data-language-link="" data-language-page="flows-intuition.html" href="flows-intuition.html" lang="fr">FR</a></nav></div></div></div><main id="main">
+<div class="intro wrap"><div><p class="eyebrow">LPF V2 · Follow the history</p><h1>When a rare event<br/>becomes a record.</h1></div><div class="intro-note"><p>A long run of identical signs can take the lead, keep it, then be overtaken. To describe that history, we must say when a record becomes visible and which clock measures its reign.</p><a class="button primary" href="#records">Read the first record</a></div></div><div class="wrap"><aside class="scope-note"><p>This page studies observations of the rare-run field: records, time in the lead and scale flows. Paper C provides the binary arithmetic comparison that supports them.</p></aside></div>
+<nav aria-label="Journey navigation" class="chapter-nav"><div class="reading-toolbar wrap"><details class="contents-menu" id="contents-menu"><summary aria-label="Journey contents"><span class="current-step" id="current-step">01 / 02</span><span class="current-title" id="current-title">A record emerges as you go.</span><span class="contents-label">Contents</span><span aria-hidden="true" class="menu-chevron">⌄</span></summary><div class="contents-panel"><div class="contents-group"><a href="#records"><b>01</b><span>A record emerges as you go.</span></a><a href="#flots"><b>02</b><span>Arrivals, departures, then a bell curve.</span></a></div><div class="contents-footer"><button class="text-button" data-open-glossary="" type="button">Open the glossary</button><label class="depth-control"><input id="expert-mode" type="checkbox"/><span aria-hidden="true" class="switch-track"></span><span>Expand technical details</span></label></div></div></details><div class="reading-options"><button class="text-button toolbar-lexicon" data-open-glossary="" type="button">Glossary</button></div></div><div aria-hidden="true" class="reading-track"><span id="reading-progress"></span></div></nav>
+<noscript><p class="wrap notice">Enable JavaScript to interact with the figures. The explanations and links to the papers remain available.</p></noscript>
+<section aria-labelledby="h-records" class="chapter wrap" data-chapter-title="A record emerges as you go." id="records">
+<div class="section-heading">
+<span class="section-number">01 /</span><div>
+<p class="eyebrow">From rare points to a story</p>
+<h2 id="h-records">A record emerges as you go.</h2>
+</div>
+</div><p class="chapter-question">At what moment do we really know a record has been broken?</p>
+<div class="section-intro">
+<p class="lead">Imagine a high-score board. A run of 7 cells beats the previous record of 4. Another run of 7 ties it: the first holder keeps the title. A run of 11 breaks it again.</p>
+<p>Going from 7 to 11 creates <strong>just one new strict record episode</strong>, even though the new run is four cells longer. And as we read the sequence cell by cell, we do not yet know where it will end: we must see its eighth cell to recognize that it beats 7.</p>
+<p>The second paper studies this story: how often the record changes, which sign holds it, and how long it stays in the lead.</p>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">LAB 06 · WHAT AN OBSERVER ACTUALLY SEES</span><button class="button small" id="record-play">Play the story ▶</button>
+<span class="badge">Constructed example</span></div>
+<div aria-label="Key moments in the story" class="scene-presets" role="group"><button class="scene-button" data-record-at="13"><span>1</span>A record of 7</button><button class="scene-button" data-record-at="20"><span>2</span>A tie at 7</button><button class="scene-button" data-record-at="28"><span>3</span>The eighth sign</button></div><label class="range-label">Number of signs read so far <output id="record-prefix-value">16</output><input id="record-prefix" max="39" min="1" type="range" value="16"/></label><div aria-label="Sequence of 39 signs, grouped into six runs. Grey marks signs not yet read. Scroll horizontally to see more." class="record-tape" id="record-tape" role="img" tabindex="0"></div>
+<div class="stat-row">
+<div>
+<strong id="record-maximum"></strong><span>visible maximum</span>
+</div>
+<div>
+<strong id="record-holder"></strong><span>sign of the first holder</span>
+</div>
+<div>
+<strong id="record-episodes"></strong><span>strict record episodes recognized</span>
+</div>
+</div>
+<div aria-label="Visible maximum and records recognized as the prefix grows" class="chart" id="record-chart" role="img"></div>
+<p aria-live="polite" id="record-reading"></p>
+<p class="micro">Deterministic example of alternating maximal runs: 4+, 2−, 7+, 7−, 11+, 8−. It illustrates the definition; it is not a sample of the multiplicative function. The run of 11 is recognized as a record at its eighth sign.</p>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>Count the minutes… or the doublings?</h3>
+<p>Imagine following a match from minute 1 to minute 64. A side leading between minutes 32 and 64 dominates more than half the observed duration, even if it was not leading at the beginning.</p>
+<p>We can choose another clock: give equal weight to 1–2, 2–4, 4–8, 8–16, 16–32 and 32–64. Each period then corresponds to a doubling. The last period accounts for only one out of six.</p>
+<p>Applied to record holders, this distinction changes the result. Over long admissible windows, time measured in doublings is shared equally between the + and − signs. Ordinary time, by contrast, retains a share that varies from one story to another: taking the lead late can carry a great deal of weight.</p>
+<p>This latter distribution also retains a slight dependence on the phase between two doublings.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Poisson flows · Theorem 6.1, p. 22 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">THE TWO CLOCKS</span></div>
+<p>Choose + or − for the record holder during each period.</p>
+<p class="try-this"><strong>Try the last interval.</strong> Reverse the sign between 32 and 64 and compare the two bars.</p><div class="clock-controls arrow-navigation" id="clock-controls"></div>
+<div id="clock-bars"></div>
+<p aria-live="polite" id="clock-reading"></p>
+<p class="micro">A schematic story spanning 6 doublings, to illustrate the weights. The signs are editable; the theorem concerns the random process transferred from the arithmetic field, not every possible story.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-8"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>The main result for records: a joint limit</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Over a window of <span class="inline-math">T</span> doublings, <span class="inline-math">N</span> counts global strict record episodes, <span class="inline-math">D=N⁺−N⁻</span> and <span class="inline-math">A</span> integrates the sign of the first holder in logarithmic time. Under the shell-transfer assumptions of Theorem 2.3 and the initial-population assumption:</p>
+<div class="formula" data-tex="\frac{1}{\sqrt T}\begin{pmatrix}N(Tt)-Tt/2\\D(Tt)\\A(Tt)\end{pmatrix}\Longrightarrow B_{\Sigma}(t).">((N(Tt)−Tt/2), D(Tt), A(Tt)) / √T ⇒ B<sub>Σ</sub>(t).</div>
+<div class="matrix-wrap">
+<div class="formula matrix-formula" data-tex="\Sigma=\begin{pmatrix}\frac14&amp;0&amp;0\\0&amp;\frac12&amp;1\\0&amp;1&amp;\frac{\pi^2}{6(\log 2)^2}\end{pmatrix}"><span>Σ, in the order (N, D, A)</span></div>
+<p>In particular, fluctuations of the signed imbalance and leadership time are correlated. The mean rate of 1/2 per doubling does not make integer-record counting a Poisson process.</p>
+</div>
+<p>The counters start at zero on a late window of T doublings, with T→∞, but the previous maximum and its holder are not reset. The conditions include a retained initial population <span class="inline-math">Λ2<sup>−T</sup>→∞</span> and shells of width h with Th→0, together with the transfer bounds of Theorem 2.3. No phase subsequence is needed for this Brownian history. It is asymptotically independent of the <em>entire terminal field</em>. The terminal maximum and the sign of its holder remain functions of that same field, so they are not claimed to be independent of each other.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Poisson flows · overview (1.3)–(1.7), pp. 3–4 ↗</a></div></details>
+<details class="expert-panel" id="approfondissement-9"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>Why shells, and why M₁?</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>LPF V2 uses C V3’s complete signed field: positions, exact lengths and actual signs are retained under the stated information budget. Record limits still have their own horizon and censoring conditions.</p>
+<p>A jump in final length can appear as several small, closely spaced steps when only a finite prefix is visible. The M₁ topology allows these steps to merge; J₁ requires a stricter matching of jumps. For physical occupation, the limiting distribution is a family indexed by the phase θ={log₂n}, along subsequences where θ converges. This phase selection concerns the terminal block, not the Brownian history. The visible maximum converges in scalar M₁ and is not tight in J₁; the sign of the first holder converges in scalar J₁.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Poisson flows · §4, p. 16 ↗</a></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>We recognize a record when it exceeds the previous one.</p></div><div class="next-chapter"><p>We have followed a story cell by cell. Now let us widen the frame to see how points enter and leave the count.</p><a href="#flots">Watch the frame evolve<span aria-hidden="true">→</span></a></div></div></section>
+<section aria-labelledby="h-flots" class="chapter tinted" data-chapter-title="Arrivals, departures, then a bell curve." id="flots"><div class="wrap">
+<div class="section-heading">
+<span class="section-number">02 /</span><div>
+<p class="eyebrow">Change the scale, preserve the geometry</p>
+<h2 id="h-flots">Arrivals, departures, then a bell curve.</h2>
+</div>
+</div><p class="chapter-question">What happens to our cloud of points when the observation frame changes?</p>
+<div class="geometry-experiment">
+<div class="geometry-intro">
+<p class="eyebrow">One cloud, two movements</p>
+<h3>The points stay put.<br/>The frame moves.</h3>
+<p>In Paper C’s Poisson chapter, each point recorded a run’s position and length. Here is a continuous representation of the model: we count the points inside a frame. <strong>The points stay in place; only the frame moves.</strong> On the left, we raise the requirement. On the right, we also look further along.</p>
+</div>
+<div class="geometry-panel">
+<div class="experiment-heading">
+<span class="figure-label">EXPLORE THE GEOMETRY OF THE FLOW</span><div class="geometry-buttons">
+<button class="button small" id="geometry-reset">New cloud ↻</button><button class="button primary small" id="geometry-play">Animate the frames ▶</button>
+</div>
+</div>
+<p class="try-this"><strong>Move forward by one doubling.</strong> On the left, the height halves. On the right, the width also doubles: the area stays the same.</p><div class="controls two">
+<label>Initial average count c<select id="geometry-c"><option value="2">2</option>
+<option selected="" value="8">8</option>
+<option value="32">32</option></select></label><label>Time in doublings <output id="geometry-t-value">0</output><input id="geometry-t" max="200" min="0" type="range" value="0"/></label>
+</div>
+<div aria-label="Frame positions" class="scene-presets geometry-stops" role="group"><button class="scene-button" data-geometry-at="0">At the start</button><button class="scene-button" data-geometry-at="100">One doubling</button><button class="scene-button" data-geometry-at="200">Two doublings</button></div><p class="micro">Here, height selects the points: it is not a run’s length. As the requirement increases, the frame becomes lower. The diagrams use an interpolation of the comparison model.</p><div class="geometry-panes">
+<div>
+<div class="pane-title">
+<h4>Raise the threshold</h4>
+<p>The frame shrinks.</p>
+</div>
+<div aria-label="Frame with fixed width and decreasing height" class="chart" id="geometry-threshold" role="img"></div>
+<p class="pane-stat"><strong id="geometry-count-threshold">—</strong> points present <span id="geometry-mean-threshold"></span></p>
+</div>
+<div>
+<div class="pane-title">
+<h4>Follow the scale</h4>
+<p>It becomes wider and lower at the same time.</p>
+</div>
+<div aria-label="Frame that widens while keeping the same area" class="chart" id="geometry-scale" role="img"></div>
+<p class="pane-stat"><strong id="geometry-count-scale">—</strong> points present <span id="geometry-mean-scale"></span></p>
+</div>
+</div>
+<div class="geometry-legend">
+<span><i class="geo-initial"></i>Already inside at the start</span><span><i class="geo-new"></i>Entered later</span><span><i class="geo-gone"></i>Left the frame</span>
+</div>
+<p aria-live="polite" class="geometry-reading" id="geometry-reading"></p>
+<p class="micro">Both diagrams use exactly the same random points. In the movement on the right, the frame’s area stays constant: the average count remains c, but the observed count fluctuates. The colours compare the chosen time with the start; they do not represent + and − signs.</p>
+<details class="geometry-math"><summary>Read the coordinates and formulas</summary><p>A homogeneous Poisson cloud of intensity 1 in the region [0,4] × [0,c]. The parameter s counts doublings. The second coordinate is an auxiliary height: it is not directly the run’s integer length.</p>
+<div class="formula" data-tex="Q_s=(0,1]\times(0,c2^{-s}],\qquad |Q_s|=c2^{-s}">Seuil : aire c fois 2 puissance moins s.</div>
+<div class="formula" data-tex="R_s=(0,2^s]\times(0,c2^{-s}],\qquad |R_s|=c">Échelle : aire constante c.</div>
+<p>This continuous model preserves the integer information at the corresponding thresholds through the canonical interpolation of §7. The natural time in the immigration–death chart is τ = (ln 2)s.</p></details>
+</div>
+</div><div class="narrative-bridge"><span>From the diagram to the story</span><p>Now count the points in the right-hand frame over time. Each arrival raises the total; each departure lowers it. That is what the next chart shows, in another simulation of the same model.</p></div><div class="split below">
+<div class="prose"><h3>Count arrivals and departures.</h3>
+<p class="lead">Imagine a room where visitors arrive, stay for a while, then leave. The number of people present rises and falls over time.</p>
+<p>The model used here follows the same simple rule: arrivals occur at random, at a constant average rate, and during any short period each person has the same probability of leaving, regardless of how long they have already spent in the room. With twice as many people present, there are twice as many opportunities for a departure.</p>
+<p>The mathematical name is an <strong>immigration–death process</strong>. Here, “death” means that a point leaves the count. The chart shows one path: an upward jump is an arrival, a downward jump is a departure.</p>
+<div class="takeaway">
+<span>The link with the papers</span>The room is an analogy for understanding a model of random points. The second paper constructs this model by extending integer lengths through a precise interpolation; it does not assume that our finite arithmetic sequence follows these arrivals and departures exactly.</div>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">LAB 07 · IMMIGRATION AND DEATH</span><button class="button small" id="flow-reset">New path ↻</button>
+<button class="button small" id="flow-play">Play the story ▶</button>
+</div>
+<p class="try-this"><strong>Explore the same story.</strong> An upward step adds a point; a downward step removes one.</p><div class="controls two">
+<label>Average number of points present c<select id="flow-c"><option value="2">2</option>
+<option selected="" value="8">8</option>
+<option value="32">32</option>
+<option value="128">128</option></select></label><label>Explore the same story<output id="flow-t-value">4.0</output><input id="flow-t" max="80" min="0" type="range" value="40"/></label>
+</div>
+<div class="stat-row">
+<div>
+<strong id="flow-pop"></strong><span>points present</span>
+</div>
+<div class="advanced-stat">
+<strong id="flow-z"></strong><span><span class="inline-math" data-tex="(X-c)/\sqrt{c}">Deviation divided by √c</span></span>
+</div>
+</div>
+<div aria-label="Stationary path of the immigration–death process" class="chart" id="flow-chart" role="img"></div>
+<p class="micro">Each rise is an arrival; each drop is a departure. The slider follows the same story. Here, one doubling of scale corresponds to ln 2 ≈ 0.693 time units. This chart simulates the comparison model.</p>
+</div>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>Compare a small crowd with a large crowd.</h3>
+<p>With an average of 2 people, counting 0, 1 or 2 makes a big difference. With an average of 128, a difference of a few people is relatively small.</p>
+<p>To compare these situations, first subtract the average, then divide the difference by its typical size—here, the square root of the average. The centre becomes zero and the fluctuations become comparable.</p>
+<p>At a large average, the bars approach the familiar <strong>bell curve</strong> of the normal, or Gaussian, distribution. Values close together in time remain linked, however: seeing a crowd at one moment makes a crowd likely just afterwards.</p>
+<a class="source" href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Poisson flows · §7, p. 25 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">COMPARE THE FLUCTUATIONS</span></div>
+<label class="gaussian-control">Average number of points present c<select id="gaussian-c"><option value="2">2</option><option selected="" value="8">8</option><option value="32">32</option><option value="128">128</option></select></label><p class="try-this"><strong>Move from 2 to 128.</strong> The blue bars approach the orange curve. This setting also changes the average in the arrivals-and-departures chart.</p><div aria-label="Poisson and Gaussian probabilities in the same normalized intervals" class="chart" id="gaussian-chart" role="img"></div>
+<p class="micro">Blue bars: Poisson probabilities. Orange line: normal probabilities integrated over each interval of width 1/√c. The axes compare probability masses with probability masses, not a mass with a density.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-10"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>Two sections of the same Poisson geometry</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>In the auxiliary plane, <span class="inline-math">X<sub>c</sub>(τ)=Π((0,e<sup>τ</sup>]×(0,ce<sup>−τ</sup>])</span> is stationary with distribution <span class="inline-math">Pois(c)</span> and satisfies</p>
+<div class="formula" data-tex="\begin{aligned}X_c(\tau+\Delta)\mid X_c(\tau)=z\ \sim\;&amp;\operatorname{Bin}\!\left(z,e^{-\Delta}\right)\\&amp;+\operatorname{Pois}\!\left(c\left(1-e^{-\Delta}\right)\right).\end{aligned}">X<sub>c</sub>(τ+Δ) | X<sub>c</sub>(τ)=z  ∼  Bin(z,e<sup>−Δ</sup>) + Pois(c(1−e<sup>−Δ</sup>)).</div>
+<p>The two terms are independent. The generator is <span class="inline-math">𝒜g(z)=c[g(z+1)−g(z)]+z[g(z−1)−g(z)]</span>. The constant-area section has an Ornstein–Uhlenbeck limit with covariance <span class="inline-math">e<sup>−|τ−σ|</sup></span>. The normalized section following the threshold at a fixed position gives a different covariance: <span class="inline-math">e<sup>−|v−w|/2</sup></span>. These two clocks are not interchangeable. The limit and interpolation checks are in the <a href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Poisson flows companion, Appendix C, pp. 9–12</a>.</p>
+<p>The canonical interpolation uses auxiliary fractional marks with density <span class="inline-math" data-tex="g(u)=2\ln(2)\,2^{-u}">g(u)=2 ln(2)·2<sup>−u</sup></span>, for 0&lt;u&lt;1 (they are not uniform); adding these marks can create records within a tied integer level. The theorems for strict integer records are therefore treated separately.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>One cloud can produce several kinds of evolution.</p></div><div class="next-chapter"><p>The first paper establishes the comparison with random points; the second derives records and flows from it. You can now return to their precise statements.</p><a href="sources.html">Find the results in the papers<span aria-hidden="true">→</span></a></div></div></div><details class="expert-panel"><summary>Go further: two summaries of the same cloud</summary><div class="expert-content"><article class="experiment" id="compression-lab"><div class="experiment-header"><span class="model-tag">Finite Poisson target · one sign · spatial test φ = 1</span><h3>Sampling and integrating the same survivor cloud</h3><p>D samples the standardized survivor count at integer thresholds. C integrates it continuously. Their limits are almost perfectly correlated; plotting C against the difference D−C makes the small residual visible.</p></div><div class="experiment-body"><div class="control-row"><label>J : <output id="compression-j-value"></output><input id="compression-j" max="10" min="1" type="range" value="8"/></label><label>Lattice phase θ : <output id="compression-phase-value"></output><input id="compression-phase" max="99" min="0" type="range" value="50"/></label><label>Seed<input id="compression-seed" max="4294967295" min="0" type="number" value="4117"/></label><button class="button" id="compression-run">Run 400 Monte Carlo trials</button></div><p aria-live="polite" class="status" id="compression-status" role="status"></p><div class="two-charts"><div><div class="chart" id="compression-scatter"></div><p class="detail">Ellipses represent covariance only: finite J (blue), asymptotic limit (dashed). They are not finite-target density contours. Monte Carlo points are added on demand.</p></div><div class="table-scroll"><table><thead><tr><th>Moment</th><th>Exact finite</th><th>Limit</th><th>MC</th></tr></thead><tbody id="compression-table"></tbody></table></div></div><div class="stats"><div class="stat"><span>Mean initial population, one sign</span><strong id="compression-population"></strong></div><div class="stat"><span>Critical survivor mean</span><strong id="compression-critical"></strong></div><div class="stat"><span>Finite correlation: C and D−C</span><strong id="compression-residual"></strong></div></div><p aria-live="polite" class="figure-reading" id="compression-reading"></p><details><summary>Model, normalization and exact finite covariance</summary><div class="detail-body"><p>Take μ=2^(J+θ−1), a Poisson(μ) population and independent exponential lifetimes with rate log2. If N(t) is the survivor count, H(t)=(N(t)−μ2⁻ᵗ)/√(μ2⁻ᵗ). We compute C by an exact integral of those lifetimes, without quadrature.</p><div class="math-display formula" data-tex="D_J=J^{-1/2}\sum_{j=0}^J H(j),\quad C_J=J^{-1/2}\int_0^J H(t)\,dt.">D_J=J^{-1/2}\sum_{j=0}^J H(j),\quad C_J=J^{-1/2}\int_0^J H(t)\,dt.</div><p>With α=(log2)/2 and r=e⁻ᵅ, the covariance kernel is e^(−α|t−u|), so<div class="math-display formula" data-tex="v_D=\frac{J+1+2\sum_{k=1}^J(J+1-k)r^k}{J},\quad v_C=\frac2\alpha-\frac{2(1-r^J)}{J\alpha^2},">v_D=\frac{J+1+2\sum_{k=1}^J(J+1-k)r^k}{J},\quad v_C=\frac2\alpha-\frac{2(1-r^J)}{J\alpha^2},</div><div class="math-display formula" data-tex="c_{DC}=\frac2{J\alpha}\left(J+1-\sum_{j=0}^Jr^j\right).">c_{DC}=\frac2{J\alpha}\left(J+1-\sum_{j=0}^Jr^j\right).</div></p><p>This samples the Poisson target, not the arithmetic function. Second moments are computed directly for that target. In the joint Gaussian limit, C and D−C become independent; finite J retains a correlation.</p><a href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Theorem 7.11 ↗</a> · <a href="https://zenodo.org/records/22876520" rel="noopener" target="_blank">Corollary 7.12 ↗</a></div></details></div></article></div></details></section>
+<div class="wrap corpus-next"><a href="flows.html"><small>Same subject · formal statements</small><strong>Lattice Poisson Flows · Research brief</strong></a><a href="clusters-intuition-en.html"><small>Continue the reading</small><strong>Arithmetic Clusters →</strong></a></div></main>
+<dialog aria-labelledby="glossary-title" id="glossary-dialog"><div class="dialog-heading">
+<div>
+<p class="eyebrow">Words from the journey</p>
+<h2 id="glossary-title">The glossary</h2>
+</div>
+<button autofocus="" class="button small" id="glossary-close">Close ×</button>
+</div>
+<div id="glossary-content"></div></dialog>
+<footer class="corpus-footer"><div class="corpus-shell"><p>Brice Pouly · Public editions · 21 September 2026</p><nav aria-label="Resources"><a href="sources.html">Sources &amp; Lean formalization</a><a download="arithmetique_du_hasard_autonome.html" href="arithmetique_du_hasard_autonome.html">Download offline HTML</a></nav></div></footer></body>
+</html>

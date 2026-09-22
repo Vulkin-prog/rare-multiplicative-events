@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#1949c6" name="theme-color"/>
+<title>Paper C · Intuition · Brice Pouly</title>
+<meta content="This page covers the binary model, long runs, Poisson comparison and the boundary effect. Records and scale dynamics continue on the LPF page." name="description"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<script src="assets/appearance.js"></script><link href="assets/style.css" rel="stylesheet"/>
+<link href="assets/katex/katex.min.css" rel="stylesheet"/>
+<script defer="" src="assets/katex/katex.min.js"></script><script defer="" src="assets/locales/en.js"></script><script defer="" src="assets/language.js"></script><script defer="" src="assets/math-render.js"></script><script defer="" src="assets/math.js"></script><script defer="" src="assets/app.js"></script>
+<link href="assets/learning.css" rel="stylesheet"/>
+<script defer="" src="assets/learning.js"></script>
+<link href="assets/journey.css" rel="stylesheet"/><script defer="" src="assets/journey.js"></script><link href="assets/appearance.css" rel="stylesheet"/><link href="c-intuition.html" hreflang="fr" rel="alternate"/><link href="c-intuition-en.html" hreflang="en" rel="alternate"/><link href="assets/guided-connections.css" rel="stylesheet"/><link href="assets/corpus.css" rel="stylesheet"/><script defer="" src="assets/corpus.js"></script><link href="assets/corpus-labs.css" rel="stylesheet"/><script defer="" src="assets/corpus-labs-math.js"></script><script defer="" src="assets/corpus-labs.js"></script></head>
+<body id="haut">
+<a class="skip" href="#construire">Skip to the journey</a>
+<header class="corpus-header"><div class="corpus-shell corpus-top"><a class="corpus-brand" href="overview-intuition-en.html"><b aria-hidden="true">±</b><span>Rare multiplicative events<small>Brice Pouly · Research corpus</small></span></a><nav aria-label="Corpus navigation" class="corpus-primary"><a href="overview-intuition-en.html">Overview</a><details class="corpus-papers has-active"><summary>The 4 papers</summary><div class="corpus-menu"><a aria-current="page" href="c-intuition-en.html"><b>Paper C · V3</b><span>Long runs &amp; rare words</span></a><a href="flows-intuition-en.html"><b>Lattice Poisson Flows · V2</b><span>Records, clocks &amp; Gaussian limits</span></a><a href="clusters-intuition-en.html"><b>Arithmetic Clusters · V1</b><span>Prime sources &amp; fixed environments</span></a><a href="environments-intuition-en.html"><b>Moving Prime Environments · V1</b><span>Moving phases &amp; visible clusters</span></a></div></details><a href="sources.html">Sources &amp; Lean</a></nav><button aria-label="Toggle light / dark theme" aria-pressed="false" class="theme-toggle" id="theme-toggle" title="Toggle light / dark theme" type="button"><svg aria-hidden="true" class="moon-icon" viewbox="0 0 24 24"><path d="M20.8 13.1A8.7 8.7 0 0 1 10.9 3.2 8.9 8.9 0 1 0 20.8 13.1Z"></path></svg><svg aria-hidden="true" class="sun-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div></header><div class="corpus-location"><div class="corpus-shell"><nav aria-label="Breadcrumb" class="corpus-breadcrumb"><a href="overview-intuition-en.html">Corpus</a><span>/</span><strong>Paper C · V3</strong></nav><div class="corpus-read-controls"><nav aria-label="Reading level" class="corpus-level"><a href="paper-c.html">Research</a><span aria-current="page">Intuition</span></nav><nav aria-label="Langue / Language" class="corpus-language"><span aria-current="page">EN</span><a data-language-link="" data-language-page="c-intuition.html" href="c-intuition.html" lang="fr">FR</a></nav></div></div></div><main id="main">
+<div class="intro wrap">
+<div>
+<p class="eyebrow">Paper C V3 · from coin tosses to rare patterns</p>
+<h1>One coin.<br/><em>Numbers that shape each other.</em>
+</h1>
+</div>
+<div class="intro-note"><p>For each prime number, we toss a coin: <strong>heads gives +1, tails gives −1</strong>. A multiplication rule then determines the other results. How far can this randomness surprise us?</p><a class="button primary start-reading" href="#construire">Start with a coin toss <span aria-hidden="true">→</span></a><p class="reading-time">Six steps. No prior probability course needed.</p></div>
+</div><div class="wrap"><aside class="scope-note"><p>This page covers the binary model, long runs, Poisson comparison and the boundary effect. Records and scale dynamics continue on the LPF page.</p></aside></div>
+<nav aria-label="Journey navigation" class="chapter-nav"><div class="reading-toolbar wrap"><details class="contents-menu" id="contents-menu"><summary aria-label="Journey contents"><span class="current-step" id="current-step">01 / 05</span><span class="current-title" id="current-title">Toss a coin. Then multiply.</span><span class="contents-label">Contents</span><span aria-hidden="true" class="menu-chevron">⌄</span></summary><div class="contents-panel"><div class="contents-group"><a href="#construire"><b>01</b><span>Toss a coin. Then multiply.</span></a><a href="#plages"><b>02</b><span>When the same sign keeps going.</span></a><a href="#poisson"><b>03</b><span>A simple law, despite the dependencies.</span></a><a href="#methode"><b>04</b><span>Count what prevents independence.</span></a><a href="#frontiere"><b>05</b><span>Two ways to produce the exceptional.</span></a><a href="#fixed-strip"><b>06</b><span>One fixed strip, many frames.</span></a></div><div class="contents-footer"><button class="text-button" data-open-glossary="" type="button">Open the glossary</button><label class="depth-control"><input id="expert-mode" type="checkbox"/><span aria-hidden="true" class="switch-track"></span><span>Expand technical details</span></label></div></div></details><div class="reading-options"><button class="text-button toolbar-lexicon" data-open-glossary="" type="button">Glossary</button></div></div><div aria-hidden="true" class="reading-track"><span id="reading-progress"></span></div></nav>
+<noscript><p class="wrap notice">Enable JavaScript to interact with the figures. The explanations and links to the papers remain available.</p></noscript>
+<section aria-labelledby="h-construire" class="chapter wrap" data-chapter-title="Toss a coin. Then multiply." id="construire">
+<div class="section-heading">
+<span class="section-number">01 /</span><div>
+<p class="eyebrow">The starting point</p>
+<h2 id="h-construire">Toss a coin. Then multiply.</h2>
+</div>
+</div><p class="chapter-question">How can one toss decide the results for several numbers?</p>
+<div class="split intro-split">
+<div class="prose">
+<p class="lead">For the number 2, we toss a fair coin: <strong>heads, write +1; tails, write −1</strong>. We do the same for 3, then 5, then 7… The previous result does not change the chances of the next toss: the tosses are independent. Each time, both outcomes have a one-in-two chance.</p>
+<p>Why these numbers? They are the <button class="term" data-term="premier">prime numbers</button>: the building blocks of multiplication. A prime number is greater than 1 and cannot be written as the product of two whole numbers greater than 1. For example, 6 splits into 2 × 3, and 12 into 2 × 2 × 3. We toss the coin for the building blocks; for the other numbers, we multiply the results we already have.</p>
+<div class="everyday-example">
+<span>An example with actual results</span><p>The coin gives −1 for 2 and +1 for 3.<br/>Then, for 6: <span class="inline-math">(−1) × (+1) = −1</span>.<br/>For 12: <span class="inline-math">(−1) × (−1) × (+1) = +1</span>.</p>
+</div>
+<p>We call <span class="inline-math">f(n)</span> the result assigned to the number n. Read this as “f of n”. Here, f(6) means −1. Once we know the results for 2 and 3, the result for 6 is fixed: there is randomness, but the values are linked.</p>
+<div class="takeaway">
+<span>What to notice</span>Two factors of −1 cancel each other: their product is +1. That is why 4 = 2 × 2, 9 = 3 × 3 and every other square always keep +1. We also assign +1 to the number 1.</div>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · definition (1.1), p. 2 ↗</a>
+</div>
+<div class="experiment prime-experiment">
+<div class="experiment-heading">
+<span class="figure-label">LAB 01 · BUILD THE SEQUENCE</span><button class="button small" id="prime-reset">Toss all the coins again ↻</button>
+<span class="badge">Multiplication rule</span></div>
+<p class="try-this"><strong>Your turn.</strong> Toss the coin for 2, then select 6 or 12 in the grid to follow the calculation. The other coins have already been tossed for you.</p><div class="coin-workshop">
+<div aria-live="polite" class="coin-result" id="coin-result" role="status">
+<span id="coin-prime-label">For the number 2</span><strong id="coin-face">—</strong><b id="coin-sign">—</b><small>Heads → +1 · Tails → −1</small>
+</div>
+<div class="coin-actions">
+<button class="button primary" id="coin-toss">Toss the coin for 2</button><button class="button" id="prime-invert">Deliberately reverse the sign</button><p>A toss can give the same result again. To make sure the result changes, choose “Reverse”.</p>
+</div>
+</div><p aria-live="polite" class="coin-message" id="coin-message">Each toss can give the same result again: that is how chance works.</p><details class="control-detail prime-picker"><summary>Choose another coin: 3, 5, 7…</summary><div aria-label="Signs of the prime numbers" class="prime-controls arrow-navigation" id="prime-controls"></div></details>
+<div class="grid-caption">
+<span>The result for each number from 1 to 60</span><span class="legend"><i class="positive"></i> +1 <i class="negative"></i> −1 <span class="square-legend">□ square</span></span>
+</div>
+<p class="keyboard-hint" id="integer-help">Select a cell to see its calculation. Using a keyboard? Use the arrow keys to move between cells.</p><div aria-describedby="integer-help" class="integer-grid arrow-navigation" id="integer-grid"></div>
+<output aria-live="polite" class="factor-output" id="factor-output">Click a whole number to see its calculation.</output>
+</div>
+</div>
+<details class="explore-panel" id="explorer-liens"><summary><span><span class="disclosure-kicker">Explore further</span><strong>Follow every effect of a single coin</strong><small>See which numbers change and which have factors that cancel in pairs.</small></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body"><div class="influence-lab experiment below">
+<div class="experiment-heading">
+<div>
+<span class="figure-label">FOLLOW A SINGLE COIN</span><h3>One choice spreads. Some pairs cancel its effect.</h3>
+</div>
+<button class="button small" id="show-square">See the calculation for 36</button>
+<button class="button" id="influence-invert">Reverse the selected coin’s sign</button></div>
+<div aria-label="How a prime number’s sign affects the results for whole numbers" class="chart" id="influence-chart" role="img"></div>
+<p aria-live="polite" id="influence-reading"></p>
+<p class="micro">Solid links show where reversing this coin changes the result. Dotted links show factors that cancel in pairs. The example displays up to nine multiples among the numbers from 1 to 60.</p>
+</div></div></details>
+<details class="expert-panel" id="approfondissement-1"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>The exact model</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p><span class="inline-math">f(n) = ∏<sub>p</sub> f(p)<sup>v<sub>p</sub>(n)</sup></span>, where the <span class="inline-math">f(p)</span> are independent and equally likely to be −1 or +1. The exponent <span class="inline-math">v<sub>p</sub>(n)</span> counts the factors of <span class="inline-math">p</span> in <span class="inline-math">n</span>. Only its parity matters. This is the completely multiplicative model, sometimes called “extended Rademacher”; it does not vanish on integers that are not squarefree. The identity <span class="inline-math">f(2n)=f(2)f(n)</span> preserves dependence at every scale.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>Chance chooses the building blocks. Multiplication links the numbers.</p></div><div class="next-chapter"><p>You now know how to build the sequence. Let us see what happens when several neighbouring results share the same sign.</p><a href="#plages">Spot long runs<span aria-hidden="true">→</span></a></div></div></section>
+<section aria-labelledby="h-plages" class="chapter wrap" data-chapter-title="When the same sign keeps going." id="plages">
+<div class="section-heading">
+<span class="section-number">02 /</span><div>
+<p class="eyebrow">From a sequence to a rare event</p>
+<h2 id="h-plages">When the same sign keeps going.</h2>
+</div>
+</div><p class="chapter-question">How can we count a long run just once, even if it continues?</p>
+<div class="section-intro"><p class="lead">Imagine a game where +1 is blue and −1 is orange. You look for the longest unbroken row of cells of the same colour. In the papers, this is called a <strong>constant run</strong>.</p><p>If eight blue cells follow one another, a small window of five cells can fit in four different positions. Yet there is still only one blue run. We therefore count its <em>start</em>, just once.</p></div><div class="window-demo experiment">
+<div class="experiment-heading">
+<div>
+<span class="figure-label">ONE RUN OR FOUR WINDOWS?</span><h3>The window moves. The start stays put.</h3>
+</div>
+<button class="button small" id="window-play">Slide the frame ▶</button>
+<span class="badge">Constructed example</span></div>
+<p class="try-this"><strong>Try it.</strong> Move the frame from left to right. It stays within the same blue run: moving it does not create a new start.</p><label class="range-label">Position of the 5-cell window <output id="window-position-value">1 of 4</output><input id="window-position" max="3" min="0" type="range" value="0"/></label><div aria-label="Four possible windows within a single run of eight positive signs" class="chart" id="window-chart" role="img"></div>
+<div class="window-verdict">
+<span><strong>1</strong> run of eight +1 signs</span><span><strong>4</strong> windows of five +1 signs</span>
+</div>
+</div>
+<div class="split">
+<div class="prose">
+<p>Now consider a comparison game: toss a new coin for <em>every</em> cell, without a multiplication rule. Requiring one more sign in the same run halves its probability each time.</p>
+<div class="everyday-example">
+<span>A sense of the scale</span><p>With 1,024 possible starts, a run of at least 10 signs appears once on average in this comparison game. That does not guarantee one in every game.</p>
+</div>
+<p>The letter N counts the possible starts, and L is the minimum length required. The predicted average, written λ (“lambda”), is <span class="inline-math" data-tex="\lambda=\frac{N}{2^L}">λ = N/2ᴸ</span>. The theorem explains why the same calculation also describes long runs in our multiplicative sequence, at large scales.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · definition (1.2), p. 3 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">LAB 02 · SPOT THE STARTS</span><button class="button small" id="run-reset">New random sequence ↻</button>
+<span class="badge">Simulated multiplicative sequence</span></div>
+<p class="try-this"><strong>Start with length 6.</strong> Increase it without generating a new sequence: fewer and fewer runs reach the required length.</p><p class="micro">To look further along, this lab builds a new sequence using the same rule: one coin per prime number, followed by multiplication.</p><div class="controls two">
+<label>Number of possible starts N<select id="run-n"><option value="128">128</option>
+<option selected="" value="512">512</option>
+<option value="2048">2,048</option></select></label><label>Minimum length L <output id="run-l-value">6</output><input id="run-l" max="14" min="2" type="range" value="6"/></label>
+</div>
+<div class="stat-row">
+<div>
+<strong id="run-count">—</strong><span>starts in the block</span>
+</div>
+<div>
+<strong id="run-lambda">—</strong><span>reference average λ</span>
+</div>
+<div>
+<strong id="run-longest">—</strong><span>longest run starting here</span>
+</div>
+</div>
+<div aria-label="Positions of all run starts in the block" class="run-map" id="run-map" role="img"></div>
+<div class="grid-caption">
+<span id="run-caption"></span><span>◆ qualifying start</span>
+</div>
+<div class="run-grid" id="run-grid"></div>
+<p aria-live="polite" class="experiment-note" id="run-results"></p>
+<p class="micro">This sequence is calculated from simulated coin tosses on the prime numbers. λ is the average predicted by the simple comparison model, not a guaranteed outcome in this game. Runs may extend beyond the right edge of the block.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-2"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>Why the counting convention matters</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<div class="formula" data-tex="\begin{aligned}J_{x,L}&amp;=\mathbf 1_{\{f(x-1)=-f(x),\ f(x)=\cdots=f(x+L-1)\}},\\ Z_{N,L}&amp;=\sum_{N\le x&lt;2N}J_{x,L}.\end{aligned}">J<sub>x,L</sub> = 1{f(x−1) = −f(x), f(x) = ⋯ = f(x+L−1)},   Z<sub>N,L</sub> = ∑<sub>N≤x&lt;2N</sub> J<sub>x,L</sub>.</div>
+<p>The block specifies the <em>starts</em> <span class="inline-math">x∈[N,2N)</span>, rather than runs necessarily contained in the block. For the maximum in a finite prefix, by contrast, we count the lengths actually visible.  <a href="flows-intuition-en.html#records">Follow this visible-length convention in LPF’s record chapter.</a></p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>Count the start of a run, just once.</p></div><div class="next-chapter"><p>We have an average number of runs. But an average does not tell us what we will see in each game.</p><a href="#poisson">Understand the Poisson distribution<span aria-hidden="true">→</span></a></div></div></section>
+<section aria-labelledby="h-poisson" class="chapter tinted" data-chapter-title="A simple law, despite the dependencies." id="poisson"><div class="wrap">
+<div class="section-heading">
+<span class="section-number">03 /</span><div>
+<p class="eyebrow">The first main result</p>
+<h2 id="h-poisson">A simple law, despite the dependencies.</h2>
+</div>
+</div><p class="chapter-question">One run on average: how many games contain none?</p>
+<div class="section-intro">
+<p class="lead">If there is one long run on average, should we expect to see exactly one? No: some games contain none, others two or more.</p>
+<p>The <strong>Poisson distribution</strong> gives the probabilities of these different counts. With an average of 1, it predicts roughly 37% of games with no runs, 37% with exactly one, and 26% with at least two. The chart below lets you change the difficulty.</p>
+<p>The first paper shows that, for long runs at the appropriate scale, our multiplicative sequence approaches this simple model. The result even covers positions, extra lengths and signs, all at once.</p>
+</div>
+<div class="experiment poisson-lab">
+<div class="experiment-heading">
+<span class="figure-label">LAB 03 · THE THRESHOLD MOVES IN STEPS</span><span class="badge">Comparison model</span>
+</div>
+<div class="poisson-layout">
+<div>
+<p class="try-this"><strong>Require one more sign.</strong> The average number of runs halves; the probability of seeing none increases.</p><div class="controls">
+<label>Lengthen or shorten the reference length<output id="pois-offset-value">0</output><input id="pois-offset" max="4" min="-3" type="range" value="0"/></label>
+<details class="control-detail"><summary>Change the size while keeping the same average</summary><p>This setting increases the number of positions and the reference length together. The probabilities therefore stay the same.</p><label>Number of doublings of N<span class="value-line">k = <output id="pois-k-value">12</output></span><input id="pois-k" max="24" min="6" type="range" value="12"/></label></details></div>
+<div class="large-stat">
+<span class="inline-math" data-tex="\lambda=\frac{N}{2^L}">λ = N / 2<sup>L</sup></span><strong id="pois-lambda">1</strong>
+</div>
+<p aria-live="polite" id="pois-description"></p>
+<p class="micro">Increasing L by one halves λ. Increasing N and L together can preserve the same comparison distribution.</p>
+</div>
+<div>
+<div aria-label="Poisson distribution" class="chart" id="poisson-chart" role="img"></div>
+<div class="probability-callout">
+<span>Probability of seeing no runs</span><strong id="pois-zero">36.8%</strong>
+</div>
+<div aria-live="polite" class="hundred-games" id="hundred-games"></div>
+</div>
+</div>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>How long will the longest run be?</h3>
+<p>To reach 1,024, we can double 1 ten times: 1, 2, 4, 8… up to 1,024. This number of doublings is written log₂ 1,024 = 10. The word <strong>logarithm</strong> names this reverse calculation.</p>
+<p>The first paper places the maximum length around this number of doublings as the sequence grows. This describes its scale, not a guaranteed length in every game.</p>
+<h3>A run carries three pieces of information.</h3>
+<p>Where does it start? How far does it exceed the required length? Is it positive or negative? A run of length 12, when at least 10 signs are required, has <strong>2 extra signs</strong>. Mathematicians call this an “excess of 2”.</p>
+<p>In the chart, raising the requirement keeps only the points that are high enough. Removed points return when you lower the slider: you are still examining the same situation.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · Theorems 1.1–1.2, pp. 3–4 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">ONE FIELD, SEVERAL THRESHOLDS</span><button class="button small" id="marks-reset">Generate new points ↻</button>
+</div>
+<p class="try-this"><strong>Raise the requirement, then lower it.</strong> The greyed-out points return: you are still examining the same set.</p><label class="range-label">Extra signs required<output id="marks-h-value">0</output><input id="marks-h" max="5" min="0" type="range" value="0"/></label><div aria-label="Marked Poisson field and points retained at the threshold" class="chart" id="marks-chart" role="img"></div>
+<p aria-live="polite" id="marks-description"></p>
+<p class="micro">These points are generated by the simple Poisson model: 24 points on average, across 256 positions, each with a random + or − sign. Their heights represent extra signs. This is not a sample of the multiplicative sequence.</p>
+</div>
+</div>
+<details class="explore-panel" id="explorer-phase"><summary><span><span class="disclosure-kicker">Explore further</span><strong>Why does the curve have a sawtooth shape?</strong><small>A length is counted in whole cells. This leaves a trace between two doublings.</small></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body"><div class="split below">
+<div class="prose">
+<h3>Why does the curve have a sawtooth shape?</h3>
+<p>A run can contain 12 or 13 cells, never 12.4. Let us choose the number of doublings of N, rounded down to the nearest whole number, as the reference length.</p>
+<p>As long as this length stays at 12, making the sequence larger adds opportunities to find a run. When it rises to 13, the requirement becomes stricter: the expected average halves. Then it starts rising again.</p>
+<p>Our position between two doublings is called the <button class="term" data-term="reseau">lattice phase</button>. This small oscillation is part of the mathematical result; it does not simply disappear when we observe many numbers.</p>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">PHASE: GROWING BETWEEN TWO DOUBLINGS</span></div>
+<label class="range-label">Number of positions N<output id="phase-t-value">13.40</output><input id="phase-t" max="1600" min="1200" type="range" value="1340"/></label><div aria-label="Moving intensity when the threshold is the logarithm rounded down" class="chart" id="phase-chart" role="img"></div>
+<p aria-live="polite" id="phase-reading"></p>
+<p class="micro">The choice shown is L = ⌊log₂N⌋. The curve shows the theoretical envelope as a function of log₂N; the point uses an actual calculated integer N. It does not represent a new random sample.</p>
+</div>
+</div></div></details>
+<details class="expert-panel" id="approfondissement-3"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>The result lives on a common lattice</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<div class="formula" data-tex="\begin{aligned}&amp;d_{\mathrm{TV}}\!\left(\mathcal L\big((K^s_{x,e})_{x,e,s}\big),\ \bigotimes_{x,e,s}\operatorname{Pois}\!\left(2^{-L-e-2}\right)\right)\\ &amp;\qquad\le \exp\!\left[-\left(\frac{1}{\sqrt 2}+o_C(1)\right)\sqrt{\log N\,\log\log N}\right].\end{aligned}">d<sub>TV</sub>(𝓛((K<sup>s</sup><sub>x,e</sub>)<sub>x,e,s</sub>), ⊗<sub>x,e,s</sub> Pois(2<sup>−L−e−2</sup>)) ≤ exp[−(1/√2 + o<sub>C</sub>(1)) √(log N · log log N)].</div>
+<p>Uniformly for <span class="inline-math">|L−log₂N|≤C</span>, with <span class="inline-math">x∈[N,2N)∩ℤ</span>, <span class="inline-math">e≥0</span>, <span class="inline-math">s∈{±1}</span>. We retain the moving parameter <span class="inline-math">λ<sub>N</sub></span>: since L is an integer, <span class="inline-math">λ<sub>N</sub></span> may oscillate; the theorem retains this moving parameter without assuming it converges. After rescaling positions, the diffuse point process is a <em>weak limit</em>. No total-variation convergence from a deterministic grid to continuous positions is claimed. Theorem 1.2 also gives, almost surely, <span class="inline-math">R<sub>M</sub> = log₂M + O(log log M)</span>. For an exact excess, the probability mass is <span class="inline-math">2<sup>−e−1</sup></span>; for an excess of at least h, it is <span class="inline-math">2<sup>−h</sup></span>.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>The Poisson distribution describes the possibilities around an average.</p></div><div class="next-chapter"><p>The simple model describes long runs despite the arithmetic links. To understand why, let us look at what the proof must control.</p><a href="#methode">Explore the method<span aria-hidden="true">→</span></a></div></div></div></section>
+<section aria-labelledby="h-methode" class="chapter wrap" data-chapter-title="Count what prevents independence." id="methode">
+<div class="section-heading">
+<span class="section-number">04 /</span><div>
+<p class="eyebrow">Behind the proof</p>
+<h2 id="h-methode">Count what prevents independence.</h2>
+</div>
+</div><p class="chapter-question">Why do the links between numbers not defeat the comparison?</p>
+<div class="split">
+<div class="prose">
+<p class="lead">To understand why the simple model works, we first need to identify the hidden links between numbers.</p>
+<p>Look at 6 = 2 × 3, 10 = 2 × 5 and 15 = 3 × 5. When we multiply them, every prime number appears twice. Their random results therefore cancel in pairs: <span class="inline-math">f(6)f(10)f(15)=+1</span>, whatever the coin tosses give.</p>
+<p>Once the results for 6 and 10 are known, the result for 15 is fixed. This is a concrete example of <strong>dependence</strong>. Distance between two parts of the sequence alone does not guarantee their independence.</p>
+<p>The proof counts relations of this kind between two groups of consecutive numbers. It also first reveals the results for the small primes, then studies the randomness still available on the large primes.</p>
+<div class="takeaway">
+<span>What the proof contributes</span>It does not claim that the links disappear. It shows that their combined effect on long runs is small enough to allow the Poisson comparison.</div>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">A RELATION THAT DISTANCE CANNOT REVEAL</span></div>
+<p>Deliberately reverse the result for 2, 3 or 5. Two results change each time; the product of all three always remains +1.</p>
+<div class="prime-controls arrow-navigation" id="relation-controls"></div>
+<div class="relation-triangle" id="relation-figure"></div>
+<div class="formula" data-tex="\begin{aligned}6\times10\times15&amp;=30^2,\\ f(6)\times f(10)\times f(15)&amp;=+1.\end{aligned}">6 × 10 × 15 = 30²<br/>f(6) × f(10) × f(15) = +1</div>
+<p class="micro">Each of the three pairs is independent in this example; the triple is not. Correlation between two values therefore cannot detect every constraint.</p>
+</div>
+</div>
+<div aria-label="The path of the proof" class="proof-route">
+<article><span>01</span><h3>Translate</h3>
+<p>Write each number using its prime factors. Factors repeated twice cancel in pairs.</p></article><article><span>02</span><h3>Count</h3>
+<p>Bound the total number of hidden links between two groups of consecutive numbers.</p></article><article><span>03</span><h3>Reveal</h3>
+<p>First learn the signs of the small primes, then identify events that still share a large prime.</p></article><article><span>04</span><h3>Compare</h3>
+<p>Show that the remaining errors become small for the long runs under study.</p></article>
+</div>
+<details class="expert-panel" id="approfondissement-4"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>Two different costs: relations and overlaps</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Theorem 3.1 of Paper C gives, for <span class="inline-math">B=L+1</span>, the uniform bound</p>
+<div class="formula" data-tex="R_2(N,L)\ll_{\beta_-,\beta_+,\varepsilon}N^{\varepsilon}\left(N^{5/3}+N^{2/3}2^B\right).">R₂(N,L) ≪<sub>β₋,β₊,ε</sub> N<sup>ε</sup>(N<sup>5/3</sup> + N<sup>2/3</sup> 2<sup>B</sup>).</div>
+<p>At the critical scale, this is <span class="inline-math">O<sub>C,ε</sub>(N<sup>5/3+ε</sup>)</span>. This bound holds in a fixed band β₋ log N ≤ B ≤ β₊ log N, with 0&lt;β₋&lt;β₊; its constant may depend on β₋, β₊ and ε. The sum runs over ordered pairs x,y∈[N,2N) with |x−y|&gt;L and weights each pair by <span class="inline-math">2<sup>ρ(x,y)</sup>−1</span>, where <span class="inline-math">ρ = dim ker(A<sub>x,y</sub><sup>T</sup>)</span> is the dimension of the space of homogeneous relations. The exponent 5/3 is an upper bound, with no claim of optimality. Their weighted count must be controlled, not just the number of pairs with a relation. The capped variant uses the mutual exclusion of distinct words at the same site.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · Theorem 3.1, p. 13 ↗</a></div></details>
+<details class="expert-panel" id="approfondissement-5"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>Conditioning requires a relative error bound</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>If two joint distributions are at total-variation distance at most ε, and the conditioning event has target probability p&gt;ε, Lemma 6.3 bounds the distance between the conditional distributions by <span class="inline-math" data-tex="\frac{\varepsilon}{p}">ε/p</span>. Convergence therefore requires <span class="inline-math" data-tex="\frac{\varepsilon}{p}\to0">ε/p→0</span>, not merely ε→0. The result also applies to a future threshold path: the observation must not be too rare relative to the available precision.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · Lemma 6.3 and Theorem 6.4, pp. 46–47 ↗</a><p>For the detailed arithmetic checks: <a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">companion, Appendix A (Runge–Pell)</a> and <a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Appendix B (cutoff and smoothing)</a>.</p></div></details>
+<details class="explore-panel" id="explorer-mots"><summary><span><span class="disclosure-kicker">Explore further</span><strong>What if we looked for a pattern rather than a run?</strong><small>Compare repeated signs with a word you search for in a text.</small></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body"><div class="split below">
+<div class="prose">
+<h3>Search for a pattern, just as in a text.</h3>
+<p>When you search for “AAAA” in “AAAAA”, two occurrences share letters. By contrast, the pattern “BAAA” cannot start again before the previous occurrence ends.</p>
+<p>Replace A with + and B with −: that is exactly the problem in this lab. A <strong>word</strong> here is simply a prescribed list of signs. A <strong>dictionary</strong> is a collection of words we search for at the same time.</p>
+<p>The paper controls these visible overlaps separately from the hidden arithmetic links. It even allows the dictionary to grow with the size of the sequence, under the conditions stated in the specialist panel.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · Theorem 1.3, p. 5 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">LAB 04 · CAN A WORD OVERLAP ITSELF?</span></div>
+<label>Word of 2 to 12 signs, + or −<input aria-describedby="word-help word-result" class="word-input" id="word-input" maxlength="12" spellcheck="false" type="text" value="-+++"/></label><div class="presets">
+<button class="chip" data-word="-+++">−+++</button><button class="chip" data-word="++++">++++</button><button class="chip" data-word="+-+-">+−+−</button>
+</div>
+<p class="micro" id="word-help">Look at the cells where the two copies overlap: do they all require the same sign?</p>
+<div class="word-overlaps" id="word-overlaps"></div>
+<p aria-live="polite" id="word-result"></p>
+</div>
+</div><details class="expert-panel" id="approfondissement-6"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>What the lab illustrates, and what the theorem requires</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>For fixed constants C&gt;0 and 0&lt;η&lt;1/2, and a deterministic dictionary <span class="inline-math">W<sub>N</sub>⊂{±1}<sup>B<sub>N</sub></sup></span> of size <span class="inline-math">m<sub>N</sub></span>, we require <span class="inline-math">m<sub>N</sub>≤N<sup>1/2−η</sup></span>, <span class="inline-math">|B<sub>N</sub>−log₂(Nm<sub>N</sub>)|≤C</span> and</p>
+<div class="formula" data-tex="\Omega(W_N)=\frac{1}{m_N}\sum_{w,v\in W_N}\sum_{1\le d&lt;B_N}2^{-d}\,\mathbf 1_{\{w\sim_d v\}}\longrightarrow0.">Ω(W<sub>N</sub>) = (1/m<sub>N</sub>) ∑<sub>w,v∈W<sub>N</sub></sub> ∑<sub>1≤d&lt;B<sub>N</sub></sub> 2<sup>−d</sup> 1{w ∼<sub>d</sub> v} → 0.</div>
+<p>Then the occurrence field admits a total-variation comparison with independent coordinates <span class="inline-math">Pois(2<sup>−B<sub>N</sub></sup>)</span>. The number of words may grow while the total intensity <span class="inline-math">Nm<sub>N</sub>2<sup>−B<sub>N</sub></sup></span> stays bounded. The exponent 1/2 is a sufficient condition, not a proved boundary. The lab calculates only a single word’s self-overlaps; a dictionary also requires overlaps between distinct words. A fixed length in this lab is not, by itself, an admissible asymptotic regime.</p></div></details></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>The proof measures the effects of hidden links.</p></div><div class="next-chapter"><p>There is one place where arithmetic gives a very visible advantage: the very beginning of the sequence.</p><a href="#frontiere">Discover the role of the beginning<span aria-hidden="true">→</span></a></div></div><aside class="corpus-math-note"><strong>Choose the dictionary before observing the strip</strong><p>A list constructed to force coincidences needs strong guarantees. If the list is sampled before looking at the signs, most lists avoid those adverse configurations. Keep the chosen dictionary fixed during the comparison: changing it at each observation would ask a different question.</p><a href="paper-c.html#typical-dictionaries">The typical-dictionary theorem</a></aside></section>
+<section aria-labelledby="h-frontiere" class="chapter" data-chapter-title="Two ways to produce the exceptional." id="frontiere"><div class="wrap">
+<div class="section-heading">
+<span class="section-number">05 /</span><div>
+<p class="eyebrow">The second main result</p>
+<h2 id="h-frontiere">Two ways to produce the exceptional.</h2>
+</div>
+</div><p class="chapter-question">Why can the very beginning of the sequence be a special place?</p>
+<div class="split">
+<div class="prose">
+<p class="lead">An exceptionally long run can benefit from many opportunities… or from a special advantage right at the beginning.</p>
+<p>Inside a very long sequence, many positions can host a run. This is like giving a rare event many chances to happen.</p>
+<p>At position 1, there is an arithmetic shortcut. For the first ten results all to be +1, only four coins need to land heads: those for 2, 3, 5 and 7. The other results follow automatically by multiplication.</p>
+<div class="everyday-example">
+<span>Why the beginning is special</span><p>Four heads have a one-in-16 chance. Ten separate coins all landing heads would have only a one-in-1,024 chance. The arithmetic rule therefore makes this initial run much less unlikely.</p>
+</div>
+<p>The symbol <button class="term" data-term="pi">π(L)</button> counts the primes up to L. At the very beginning, the exact probability of L positive results is <span class="inline-math">2<sup>−π(L)</sup></span>. The paper quantifies the competition with all the opportunities further along.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · Theorem 1.2, p. 4 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">WHERE DOES AN EXCEPTIONAL RUN COME FROM?</span><span class="badge">Two-origin model</span>
+</div>
+<p class="conditional-intro">We look only at experiments where a run this long exists. <strong>Among these experiments</strong>, what proportion come from the beginning of the sequence?</p>
+<p class="try-this">Keep the length fixed and move the slider on the right: you change the number of opportunities to find a run further along the sequence.</p><div class="controls two">
+<label>Length L <output id="boundary-l-value">64</output><input id="boundary-l" max="160" min="64" type="range" value="64"/></label><label>Favour the block ← → favour the origin<output id="boundary-s-value">0</output><input id="boundary-s" max="6" min="-6" type="range" value="0"/></label>
+</div>
+<div aria-hidden="true" class="mixture-bar">
+<div id="boundary-share"></div>
+<div id="bulk-share"></div>
+</div>
+<div class="mixture-labels">
+<span><i class="boundary-dot"></i> At the origin <strong id="boundary-weight"></strong></span><span><i class="bulk-dot"></i> In the block <strong id="bulk-weight"></strong></span>
+</div>
+<div aria-label="Mixture of a mass at the origin and a uniform distribution" class="chart" id="boundary-chart" role="img"></div>
+<p aria-live="polite" id="boundary-reading"></p>
+<details class="control-detail"><summary>How are these parameters related?</summary><div class="formula" data-tex="s=L-\log_2 M-\pi(L)">s = L − log₂ M − π(L)</div><p id="boundary-parameters"></p></details><p class="micro">Comparison weights conditional on the existence of a run. The blue line represents the probability of a start at the origin; the orange area represents starts spread across the block. These two objects are read differently: a mass at one point and a density on an interval. The model uses <span class="inline-math">M = 2<sup>L−π(L)−s</sup></span>.</p>
+</div>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>At every cell… or only at prime numbers?</h3>
+<p>In the simple block model, each extra cell must still be the right colour: every step costs a factor of two.</p>
+<p>At the very beginning of the sequence, composite numbers need no new coin. If the first ten values are positive, reaching 11 requires another heads; reaching 12 then requires nothing more, because 12 = 2 × 2 × 3.</p>
+<p>That is why the blue curve drops at primes and stays flat between them. The orange curve drops at every integer. Each mechanism has its own “clock”.</p>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">EXTEND BY e SIGNS</span></div>
+<div aria-label="Comparison of excess tails at the boundary and in the block" class="chart" id="overshoot-chart" role="img"></div>
+<p class="micro">Blue: <span class="inline-math">2<sup>−(π(L+e)−π(L))</sup></span>, the exact conditional probability of extending the run starting at 1. Orange: <span class="inline-math">2<sup>−e</sup></span>, the extension probability in the simple block model.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-7"><summary><span><span class="disclosure-kicker">Statement &amp; method</span><strong>The exact regime and centring</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<div class="formula" data-tex="\begin{aligned}\mathbb P(R_M\ge L)&amp;=2^{-\pi(L)}+M2^{-L}\\&amp;\quad+o\!\left(2^{-\pi(L)}+M2^{-L}\right).\end{aligned}">ℙ(R<sub>M</sub> ≥ L) = 2<sup>−π(L)</sup> + M2<sup>−L</sup> + o(2<sup>−π(L)</sup> + M2<sup>−L</sup>).</div>
+<p>Assumptions: <span class="inline-math">L→∞</span>, <span class="inline-math">L=O(log M)</span>, <span class="inline-math">M2<sup>−L</sup>→0</span>. If <span class="inline-math">s=L−log₂M−π(L)</span> converges, the first normalized position, conditional on existence, tends to <span class="inline-math" data-tex="\frac{1}{1+2^{-s}}\delta_0+\frac{2^{-s}}{1+2^{-s}}\operatorname{Leb}_{[0,1]}">(1+2<sup>−s</sup>)<sup>−1</sup>δ₀ + 2<sup>−s</sup>(1+2<sup>−s</sup>)<sup>−1</sup>Leb<sub>[0,1]</sub></span>. Theorem 7.11 retains the lattice positions and moving weights, along with the sign and excess. Do not confuse the <em>exact</em> probability mass of the event starting at 1 with the probability of a run somewhere in the entire boundary region: the latter requires the relative estimate of Theorem 7.1.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>The key idea</span><p>Many opportunities, or a head start.</p></div><div class="next-chapter"><p>Let us now move from where a run appears to its story: when does it become a record?</p><a href="flows-intuition-en.html#records">Follow the records<span aria-hidden="true">→</span></a></div></div></div><aside class="new-paper-bridge"><p class="eyebrow">A related corpus question · Arithmetic Clusters</p><h3>What if rare events arrive in groups?</h3><p>Arithmetic Clusters studies the sources and dependencies the comparison target must retain. This branch can be read separately from the record route.</p><a class="button primary" href="clusters-intuition-en.html">Read the Arithmetic Clusters guide</a><a href="flows-intuition-en.html#records">Continue directly to records</a></aside></section>
+<section class="chapter wrap" data-chapter-title="One fixed strip, many frames." id="fixed-strip"><div class="section-heading"><span class="section-number">06 /</span><div><p class="eyebrow">Paper C V3 · Corollary 7.8a</p><h2>One fixed strip, many frames.</h2></div></div><article class="experiment" id="empirical-lab"><div class="experiment-header"><span class="model-tag">Finite arithmetic sample · all spatial origins</span><h3>Fix the random function. Move only the frame.</h3><p>First toss the prime signs once. The resulting strip stays fixed. At every possible origin, count the left-maximal run starts in a window of h candidate sites. The histogram uses every origin; the slider selects one of them.</p></div><div class="experiment-body"><div class="control-row"><label>Prefix size M<select id="empirical-size"><option>8192</option><option selected="">32768</option><option>131072</option></select></label><label>Run length L<select id="empirical-length"><option>9</option><option selected="">10</option><option>11</option><option>12</option></select></label><label>Candidate starts per window h<select id="empirical-window"><option>512</option><option>1024</option><option selected="">2048</option><option>4096</option></select></label><button class="button" id="empirical-reset">New prime signs</button></div><label>Frame origin u : <output id="empirical-origin-value">0</output><input id="empirical-origin" max="30000" min="0" style="width:100%" type="range" value="0"/></label><div class="chart" id="empirical-strip"></div><p aria-live="polite" class="lab-caption" id="empirical-reading"></p><div class="two-charts"><div class="chart" id="empirical-law"></div><div><div class="stats"><div class="stat"><span>Count in this frame</span><strong id="empirical-count"></strong></div><div class="stat"><span>All origins evaluated</span><strong id="empirical-origins"></strong></div><div class="stat"><span>Target mean h2⁻ᴸ</span><strong id="empirical-mean"></strong></div><div class="stat"><span>Exact finite histogram TV</span><strong id="empirical-tv"></strong></div></div><div class="chart-key"><span><i class="key-line"></i>Fixed-strip frequencies</span><span><i class="key-dot"></i>Poisson reference</span></div></div></div><p class="method-note">A finite illustration of the order of randomness, not a numerical certificate of Corollary 7.8a. The theorem fixes α and τ and prescribes dyadic scales and near-macroscopic windows. These accessible controls choose M, L and h directly. TV includes all Poisson mass outside the empirical support.</p><p><a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Corollary 7.8a ↗</a> · <a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">What the full map retains ↗</a></p></div></article></section><div class="wrap corpus-next"><a href="paper-c.html"><small>Same subject · formal statements</small><strong>Paper C · Research brief</strong></a><a href="flows-intuition-en.html"><small>Continue the reading</small><strong>Lattice Poisson Flows →</strong></a></div></main>
+<dialog aria-labelledby="glossary-title" id="glossary-dialog"><div class="dialog-heading">
+<div>
+<p class="eyebrow">Words from the journey</p>
+<h2 id="glossary-title">The glossary</h2>
+</div>
+<button autofocus="" class="button small" id="glossary-close">Close ×</button>
+</div>
+<div id="glossary-content"></div></dialog>
+<footer class="corpus-footer"><div class="corpus-shell"><p>Brice Pouly · Public editions · 21 September 2026</p><nav aria-label="Resources"><a href="sources.html">Sources &amp; Lean formalization</a><a download="arithmetique_du_hasard_autonome.html" href="arithmetique_du_hasard_autonome.html">Download offline HTML</a></nav></div></footer></body>
+</html>

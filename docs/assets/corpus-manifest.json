@@ -1,0 +1,75 @@
+{
+  "overview": {
+    "name": "Corpus overview",
+    "fr": "Vue d’ensemble",
+    "version": "V1",
+    "doi": "22880994",
+    "route": "index.html",
+    "guide": "overview-intuition-en.html",
+    "guidefr": "overview-intuition.html",
+    "title": "Rare events in multiplicative sequences: Poisson laws, clusters, and observation",
+    "url": "https://zenodo.org/records/22880994"
+  },
+  "c": {
+    "name": "Paper C",
+    "fr": "Paper C",
+    "version": "V3",
+    "doi": "22872154",
+    "route": "paper-c.html",
+    "guide": "c-intuition-en.html",
+    "guidefr": "c-intuition.html",
+    "title": "Long runs and rare patterns of a random completely multiplicative function",
+    "short": "Long runs & rare words",
+    "shortfr": "Longues séries et mots rares",
+    "url": "https://zenodo.org/records/22872154",
+    "companion_url": "https://zenodo.org/records/22872154"
+  },
+  "lpf": {
+    "name": "Lattice Poisson Flows",
+    "fr": "Lattice Poisson Flows",
+    "version": "V2",
+    "doi": "22876520",
+    "route": "flows.html",
+    "guide": "flows-intuition-en.html",
+    "guidefr": "flows-intuition.html",
+    "title": "Records, scale flows, and Gaussian limits from lattice Poisson fields",
+    "short": "Records, clocks & Gaussian limits",
+    "shortfr": "Records, horloges et limites gaussiennes",
+    "url": "https://zenodo.org/records/22876520",
+    "companion_url": "https://zenodo.org/records/22876520"
+  },
+  "ac": {
+    "name": "Arithmetic Clusters",
+    "fr": "Arithmetic Clusters",
+    "version": "V1",
+    "doi": "22877400",
+    "route": "clusters.html",
+    "guide": "clusters-intuition-en.html",
+    "guidefr": "clusters-intuition.html",
+    "title": "Poisson laws and arithmetic clusters for rare multiplicative patterns",
+    "short": "Prime sources & fixed environments",
+    "shortfr": "Sources premières et environnements fixes",
+    "url": "https://zenodo.org/records/22877400"
+  },
+  "me": {
+    "name": "Moving Prime Environments",
+    "fr": "Moving Prime Environments",
+    "version": "V1",
+    "doi": "22878806",
+    "route": "environments.html",
+    "guide": "environments-intuition-en.html",
+    "guidefr": "environments-intuition.html",
+    "title": "Moving prime environments and arithmetic cluster limits",
+    "short": "Moving phases & visible clusters",
+    "shortfr": "Phases mobiles et groupes visibles",
+    "url": "https://zenodo.org/records/22878806"
+  },
+  "lean": {
+    "name": "Paper C Lean formalization",
+    "version": "v0.49.0",
+    "doi": "22875443",
+    "url": "https://doi.org/10.5281/zenodo.22875443",
+    "route": "sources.html#lean",
+    "commit": "b9fa9ba490f201b408a302a86f1594ee620b228b"
+  }
+}

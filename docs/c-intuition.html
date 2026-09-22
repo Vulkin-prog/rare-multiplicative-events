@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#1949c6" name="theme-color"/>
+<title>Paper C · Parcours guidé · Brice Pouly</title>
+<meta content="Cette page explique le modèle à signes, les longues séries, la loi de Poisson et le rôle du début. Les records et les changements d’échelle se poursuivent sur la page LPF." name="description"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<script src="assets/appearance.js"></script><link href="assets/style.css" rel="stylesheet"/>
+<link href="assets/katex/katex.min.css" rel="stylesheet"/>
+<script defer="" src="assets/katex/katex.min.js"></script><script defer="" src="assets/language.js"></script><script defer="" src="assets/math-render.js"></script><script defer="" src="assets/math.js"></script><script defer="" src="assets/app.js"></script>
+<link href="assets/learning.css" rel="stylesheet"/>
+<script defer="" src="assets/learning.js"></script>
+<link href="assets/journey.css" rel="stylesheet"/><script defer="" src="assets/journey.js"></script><link href="assets/appearance.css" rel="stylesheet"/><link href="c-intuition.html" hreflang="fr" rel="alternate"/><link href="c-intuition-en.html" hreflang="en" rel="alternate"/><link href="assets/guided-connections.css" rel="stylesheet"/><link href="assets/corpus.css" rel="stylesheet"/><script defer="" src="assets/corpus.js"></script><link href="assets/corpus-labs.css" rel="stylesheet"/><script defer="" src="assets/corpus-labs-math.js"></script><script defer="" src="assets/corpus-labs.js"></script></head>
+<body id="haut">
+<a class="skip" href="#construire">Aller au parcours</a>
+<header class="corpus-header"><div class="corpus-shell corpus-top"><a class="corpus-brand" href="overview-intuition.html"><b aria-hidden="true">±</b><span>L’arithmétique du hasard<small>Brice Pouly · Corpus de recherche</small></span></a><nav aria-label="Navigation du corpus" class="corpus-primary"><a href="overview-intuition.html">Vue d’ensemble</a><details class="corpus-papers has-active"><summary>Les 4 papiers</summary><div class="corpus-menu"><a aria-current="page" href="c-intuition.html"><b>Paper C · V3</b><span>Longues séries et mots rares</span></a><a href="flows-intuition.html"><b>Lattice Poisson Flows · V2</b><span>Records, horloges et limites gaussiennes</span></a><a href="clusters-intuition.html"><b>Arithmetic Clusters · V1</b><span>Sources premières et environnements fixes</span></a><a href="environments-intuition.html"><b>Moving Prime Environments · V1</b><span>Phases mobiles et groupes visibles</span></a></div></details><a href="sources.html">Sources et Lean</a></nav><button aria-label="Changer de thème" aria-pressed="false" class="theme-toggle" id="theme-toggle" title="Changer de thème" type="button"><svg aria-hidden="true" class="moon-icon" viewbox="0 0 24 24"><path d="M20.8 13.1A8.7 8.7 0 0 1 10.9 3.2 8.9 8.9 0 1 0 20.8 13.1Z"></path></svg><svg aria-hidden="true" class="sun-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div></header><div class="corpus-location"><div class="corpus-shell"><nav aria-label="Breadcrumb" class="corpus-breadcrumb"><a href="overview-intuition.html">Corpus</a><span>/</span><strong>Paper C · V3</strong></nav><div class="corpus-read-controls"><nav aria-label="Niveau de lecture" class="corpus-level"><a href="paper-c.html">Recherche · EN</a><span aria-current="page">Intuition</span></nav><nav aria-label="Langue / Language" class="corpus-language"><a data-language-link="" data-language-page="c-intuition-en.html" href="c-intuition-en.html" lang="en">EN</a><span aria-current="page">FR</span></nav></div></div></div><main id="main">
+<div class="intro wrap">
+<div>
+<p class="eyebrow">Paper C V3 · des lancers aux motifs rares</p>
+<h1>Une pièce de monnaie.<br/><em>Des nombres qui se répondent.</em>
+</h1>
+</div>
+<div class="intro-note"><p>Pour chaque nombre premier, on lance une pièce : <strong>pile donne +1, face donne −1</strong>. Une règle de multiplication détermine ensuite les autres résultats. Jusqu’où ce hasard peut-il nous surprendre ?</p><a class="button primary start-reading" href="#construire">Commencer par un lancer <span aria-hidden="true">→</span></a><p class="reading-time">Six étapes. Aucun prérequis en probabilités.</p></div>
+</div><div class="wrap"><aside class="scope-note"><p>Cette page explique le modèle à signes, les longues séries, la loi de Poisson et le rôle du début. Les records et les changements d’échelle se poursuivent sur la page LPF.</p></aside></div>
+<nav aria-label="Navigation dans le parcours" class="chapter-nav"><div class="reading-toolbar wrap"><details class="contents-menu" id="contents-menu"><summary aria-label="Sommaire du parcours"><span class="current-step" id="current-step">01 / 05</span><span class="current-title" id="current-title">Lancer une pièce. Puis multiplier.</span><span class="contents-label">Sommaire</span><span aria-hidden="true" class="menu-chevron">⌄</span></summary><div class="contents-panel"><div class="contents-group"><a href="#construire"><b>01</b><span>Lancer une pièce. Puis multiplier.</span></a><a href="#plages"><b>02</b><span>Quand le même signe s’attarde.</span></a><a href="#poisson"><b>03</b><span>Une loi simple, malgré les dépendances.</span></a><a href="#methode"><b>04</b><span>Compter ce qui empêche l’indépendance.</span></a><a href="#frontiere"><b>05</b><span>Deux façons de produire l’exceptionnel.</span></a><a href="#fixed-strip"><b>06</b><span>Une bande fixe, beaucoup de cadrages.</span></a></div><div class="contents-footer"><button class="text-button" data-open-glossary="" type="button">Ouvrir le lexique</button><label class="depth-control"><input id="expert-mode" type="checkbox"/><span aria-hidden="true" class="switch-track"></span><span>Tout approfondir</span></label></div></div></details><div class="reading-options"><button class="text-button toolbar-lexicon" data-open-glossary="" type="button">Lexique</button></div></div><div aria-hidden="true" class="reading-track"><span id="reading-progress"></span></div></nav>
+<noscript><p class="wrap notice">Activez JavaScript pour manipuler les figures. Les explications et les liens vers les articles restent disponibles.</p></noscript>
+<section aria-labelledby="h-construire" class="chapter wrap" data-chapter-title="Lancer une pièce. Puis multiplier." id="construire">
+<div class="section-heading">
+<span class="section-number">01 /</span><div>
+<p class="eyebrow">Le point de départ</p>
+<h2 id="h-construire">Lancer une pièce. Puis multiplier.</h2>
+</div>
+</div><p class="chapter-question">Comment un seul lancer peut-il décider du résultat de plusieurs nombres ?</p>
+<div class="split intro-split">
+<div class="prose">
+<p class="lead">Pour le nombre 2, on lance une pièce équilibrée : <strong>pile, on écrit +1 ; face, on écrit −1</strong>. On recommence pour 3, puis 5, puis 7… Le résultat précédent ne change pas les chances du lancer suivant : on dit que les lancers sont indépendants. Chaque fois, les deux résultats ont une chance sur deux.</p>
+<p>Pourquoi ces nombres-là ? Ce sont les <button class="term" data-term="premier">nombres premiers</button> : les briques de la multiplication. Un nombre premier est plus grand que 1 et ne se décompose pas en un produit de deux nombres entiers plus grands que 1. Par exemple, 6 se décompose en 2 × 3 et 12 en 2 × 2 × 3. Nous lançons la pièce pour les briques ; pour les autres nombres, nous multiplions les résultats déjà obtenus.</p>
+<div class="everyday-example">
+<span>Un exemple avec de vrais résultats</span><p>La pièce donne −1 pour 2 et +1 pour 3.<br/>Alors, pour 6 : <span class="inline-math">(−1) × (+1) = −1</span>.<br/>Pour 12 : <span class="inline-math">(−1) × (−1) × (+1) = +1</span>.</p>
+</div>
+<p>On appelle <span class="inline-math">f(n)</span> le résultat attribué au nombre n. Cela se lit « f de n ». Ainsi, f(6) désigne ici −1. Connaître les résultats de 2 et de 3 impose celui de 6 : le hasard est présent, mais les valeurs sont liées.</p>
+<div class="takeaway">
+<span>À observer</span>Deux facteurs −1 se compensent : leur produit vaut +1. C’est pourquoi 4 = 2 × 2, 9 = 3 × 3 et tous les autres carrés gardent toujours +1. On donne aussi +1 au nombre 1.</div>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · définition (1.1), p. 2 ↗</a>
+</div>
+<div class="experiment prime-experiment">
+<div class="experiment-heading">
+<span class="figure-label">LABO 01 · CONSTRUIRE LA SUITE</span><button class="button small" id="prime-reset">Relancer toutes les pièces ↻</button>
+<span class="badge">Règle multiplicative</span></div>
+<p class="try-this"><strong>À vous.</strong> Lancez la pièce de 2, puis sélectionnez 6 ou 12 dans la grille pour suivre le calcul. Les autres pièces ont déjà été lancées pour vous.</p><div class="coin-workshop">
+<div aria-live="polite" class="coin-result" id="coin-result" role="status">
+<span id="coin-prime-label">Pour le nombre 2</span><strong id="coin-face">—</strong><b id="coin-sign">—</b><small>Pile → +1 · Face → −1</small>
+</div>
+<div class="coin-actions">
+<button class="button primary" id="coin-toss">Lancer la pièce pour 2</button><button class="button" id="prime-invert">Inverser volontairement</button><p>Un lancer peut redonner le même résultat. Pour comparer à coup sûr, choisissez « Inverser ».</p>
+</div>
+</div><p aria-live="polite" class="coin-message" id="coin-message">Chaque lancer peut redonner le même résultat : c’est le hasard.</p><details class="control-detail prime-picker"><summary>Choisir une autre pièce : 3, 5, 7…</summary><div aria-label="Signes des nombres premiers" class="prime-controls arrow-navigation" id="prime-controls"></div></details>
+<div class="grid-caption">
+<span>Le résultat pour chaque nombre de 1 à 60</span><span class="legend"><i class="positive"></i> +1 <i class="negative"></i> −1 <span class="square-legend">□ carré</span></span>
+</div>
+<p class="keyboard-hint" id="integer-help">Sélectionnez une case pour lire son calcul. Au clavier : flèches pour changer de case.</p><div aria-describedby="integer-help" class="integer-grid arrow-navigation" id="integer-grid"></div>
+<output aria-live="polite" class="factor-output" id="factor-output">Cliquez sur un entier pour lire son calcul.</output>
+</div>
+</div>
+<details class="explore-panel" id="explorer-liens"><summary><span><span class="disclosure-kicker">Pour aller plus loin</span><strong>Suivre tous les effets d’une seule pièce</strong><small>Voir les nombres qui changent et ceux dont les facteurs se compensent.</small></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body"><div class="influence-lab experiment below">
+<div class="experiment-heading">
+<div>
+<span class="figure-label">SUIVRE UNE SEULE PIÈCE</span><h3>Un choix se propage. Certaines paires l’annulent.</h3>
+</div>
+<button class="button small" id="show-square">Voir le calcul de 36</button>
+<button class="button" id="influence-invert">Inverser la pièce sélectionnée</button></div>
+<div aria-label="Influence du signe d’un nombre premier sur les résultats des entiers" class="chart" id="influence-chart" role="img"></div>
+<p aria-live="polite" id="influence-reading"></p>
+<p class="micro">Les liens pleins indiquent où inverser cette pièce change le résultat. Les liens pointillés montrent les facteurs qui se compensent par paires. L’exemple affiche jusqu’à neuf multiples parmi les nombres de 1 à 60.</p>
+</div></div></details>
+<details class="expert-panel" id="approfondissement-1"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Le modèle exact</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p><span class="inline-math">f(n) = ∏<sub>p</sub> f(p)<sup>v<sub>p</sub>(n)</sup></span>, où les <span class="inline-math">f(p)</span> sont indépendants et équiprobables dans {−1,+1}. L’exposant <span class="inline-math">v<sub>p</sub>(n)</span> compte les facteurs <span class="inline-math">p</span> dans <span class="inline-math">n</span>. Seule sa parité intervient. Il s’agit du modèle complètement multiplicatif, parfois dit « Rademacher étendu » ; il ne s’annule pas sur les entiers non libres de carrés. L’identité <span class="inline-math">f(2n)=f(2)f(n)</span> conserve une dépendance à toutes les échelles.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>Le hasard choisit les briques. La multiplication relie les nombres.</p></div><div class="next-chapter"><p>Vous savez maintenant construire la suite. Regardons ce qui se passe quand plusieurs résultats voisins portent le même signe.</p><a href="#plages">Repérer les longues séries<span aria-hidden="true">→</span></a></div></div></section>
+<section aria-labelledby="h-plages" class="chapter wrap" data-chapter-title="Quand le même signe s’attarde." id="plages">
+<div class="section-heading">
+<span class="section-number">02 /</span><div>
+<p class="eyebrow">De la suite à l’événement rare</p>
+<h2 id="h-plages">Quand le même signe s’attarde.</h2>
+</div>
+</div><p class="chapter-question">Comment compter une longue série une seule fois, même si elle continue ?</p>
+<div class="section-intro"><p class="lead">Imaginez un jeu où +1 est bleu et −1 est orange. Vous cherchez la plus longue suite de cases de la même couleur, sans interruption. Dans les articles, une telle série s’appelle une <strong>plage constante</strong>.</p><p>Si huit cases bleues se suivent, une petite fenêtre de cinq cases peut y prendre quatre positions différentes. Pourtant, il n’y a toujours qu’une seule série bleue. Nous comptons donc son <em>début</em>, une seule fois.</p></div><div class="window-demo experiment">
+<div class="experiment-heading">
+<div>
+<span class="figure-label">UNE SÉRIE OU QUATRE FENÊTRES ?</span><h3>La fenêtre bouge. Le début reste le même.</h3>
+</div>
+<button class="button small" id="window-play">Faire glisser le cadre ▶</button>
+<span class="badge">Exemple construit</span></div>
+<p class="try-this"><strong>À essayer.</strong> Déplacez le cadre de gauche à droite. Il reste à l’intérieur de la même série bleue : son déplacement ne crée pas un nouveau début.</p><label class="range-label">Position de la fenêtre de 5 cases <output id="window-position-value">1 sur 4</output><input id="window-position" max="3" min="0" type="range" value="0"/></label><div aria-label="Quatre fenêtres possibles dans une unique série de huit signes positifs" class="chart" id="window-chart" role="img"></div>
+<div class="window-verdict">
+<span><strong>1</strong> seule série de huit +1</span><span><strong>4</strong> fenêtres de cinq +1</span>
+</div>
+</div>
+<div class="split">
+<div class="prose">
+<p>Prenons maintenant un jeu de comparaison : on lance une nouvelle pièce pour <em>chaque</em> case, sans règle de multiplication. Demander un signe de plus dans la même série divise chaque fois sa probabilité par deux.</p>
+<div class="everyday-example">
+<span>Un ordre de grandeur</span><p>Avec 1 024 débuts possibles, une série d’au moins 10 signes apparaît en moyenne une fois dans ce jeu de comparaison. Cela ne garantit pas qu’il y en aura une à chaque partie.</p>
+</div>
+<p>La lettre N compte les débuts possibles, et L est la longueur minimale demandée. Le nombre moyen prévu, noté λ (« lambda »), vaut <span class="inline-math" data-tex="\lambda=\frac{N}{2^L}">λ = N/2ᴸ</span>. Le théorème explique pourquoi ce même calcul décrit aussi les longues séries de notre suite multiplicative, lorsque l’échelle devient grande.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · définition (1.2), p. 3 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">LABO 02 · REPÉRER LES DÉBUTS</span><button class="button small" id="run-reset">Nouveau tirage ↻</button>
+<span class="badge">Suite multiplicative simulée</span></div>
+<p class="try-this"><strong>Commencez avec la longueur 6.</strong> Augmentez-la sans refaire le tirage : de moins en moins de séries atteignent la longueur demandée.</p><p class="micro">Pour regarder plus loin, ce labo construit une nouvelle suite avec la même règle : une pièce par nombre premier, puis des multiplications.</p><div class="controls two">
+<label>Nombre de débuts possibles N<select id="run-n"><option value="128">128</option>
+<option selected="" value="512">512</option>
+<option value="2048">2 048</option></select></label><label>Longueur minimale L <output id="run-l-value">6</output><input id="run-l" max="14" min="2" type="range" value="6"/></label>
+</div>
+<div class="stat-row">
+<div>
+<strong id="run-count">—</strong><span>débuts dans le bloc</span>
+</div>
+<div>
+<strong id="run-lambda">—</strong><span>moyenne de référence λ</span>
+</div>
+<div>
+<strong id="run-longest">—</strong><span>plus longue plage débutant ici</span>
+</div>
+</div>
+<div aria-label="Positions de tous les débuts de plages dans le bloc" class="run-map" id="run-map" role="img"></div>
+<div class="grid-caption">
+<span id="run-caption"></span><span>◆ début retenu</span>
+</div>
+<div class="run-grid" id="run-grid"></div>
+<p aria-live="polite" class="experiment-note" id="run-results"></p>
+<p class="micro">Cette suite est calculée à partir de véritables lancers simulés sur les nombres premiers. λ désigne la moyenne prévue par le modèle simple de comparaison, pas le résultat garanti de cette partie. Les plages peuvent dépasser le bord droit du bloc.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-2"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Pourquoi cette convention de comptage compte</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<div class="formula" data-tex="\begin{aligned}J_{x,L}&amp;=\mathbf 1_{\{f(x-1)=-f(x),\ f(x)=\cdots=f(x+L-1)\}},\\ Z_{N,L}&amp;=\sum_{N\le x&lt;2N}J_{x,L}.\end{aligned}">J<sub>x,L</sub> = 1{f(x−1) = −f(x), f(x) = ⋯ = f(x+L−1)},   Z<sub>N,L</sub> = ∑<sub>N≤x&lt;2N</sub> J<sub>x,L</sub>.</div>
+<p>Le bloc porte sur les <em>débuts</em> <span class="inline-math">x∈[N,2N)</span>, et non sur des plages nécessairement contenues dans ce bloc. Pour le maximum dans un préfixe fini, on compte au contraire les longueurs effectivement visibles.  <a href="flows-intuition.html#records">Retrouver cette convention dans le chapitre des records de LPF.</a></p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>On compte le début d’une série, une seule fois.</p></div><div class="next-chapter"><p>Nous avons un nombre moyen de séries. Mais une moyenne ne dit pas ce que l’on verra dans chaque partie.</p><a href="#poisson">Comprendre la loi de Poisson<span aria-hidden="true">→</span></a></div></div></section>
+<section aria-labelledby="h-poisson" class="chapter tinted" data-chapter-title="Une loi simple, malgré les dépendances." id="poisson"><div class="wrap">
+<div class="section-heading">
+<span class="section-number">03 /</span><div>
+<p class="eyebrow">Le premier résultat phare</p>
+<h2 id="h-poisson">Une loi simple, malgré les dépendances.</h2>
+</div>
+</div><p class="chapter-question">Une série en moyenne : combien de parties n’en contiennent aucune ?</p>
+<div class="section-intro">
+<p class="lead">S’il apparaît une longue série en moyenne, faut-il s’attendre à en voir exactement une ? Non : certaines parties n’en contiennent aucune, d’autres deux ou davantage.</p>
+<p>La <strong>loi de Poisson</strong> donne les probabilités de ces différents nombres. Pour une moyenne de 1, elle prévoit environ 37 % de parties sans série, 37 % avec une seule, et 26 % avec au moins deux. Le graphique ci-dessous permet de modifier la difficulté.</p>
+<p>Le premier article montre que, pour les longues séries à l’échelle appropriée, notre suite multiplicative se rapproche de ce modèle simple. Le résultat porte même sur les positions, les longueurs supplémentaires et les signes, tous à la fois.</p>
+</div>
+<div class="experiment poisson-lab">
+<div class="experiment-heading">
+<span class="figure-label">LABO 03 · LE SEUIL SE DÉPLACE PAR MARCHES</span><span class="badge">Modèle de comparaison</span>
+</div>
+<div class="poisson-layout">
+<div>
+<p class="try-this"><strong>Demandez un signe de plus.</strong> Le nombre moyen de séries est divisé par deux ; la probabilité de n’en voir aucune augmente.</p><div class="controls">
+<label>Allonger ou raccourcir la longueur de référence<output id="pois-offset-value">0</output><input id="pois-offset" max="4" min="-3" type="range" value="0"/></label>
+<details class="control-detail"><summary>Changer la taille, à moyenne constante</summary><p>Ce réglage augmente ensemble le nombre de positions et la longueur de référence. Les probabilités restent donc les mêmes.</p><label>Nombre de doublements de N<span class="value-line">k = <output id="pois-k-value">12</output></span><input id="pois-k" max="24" min="6" type="range" value="12"/></label></details></div>
+<div class="large-stat">
+<span class="inline-math" data-tex="\lambda=\frac{N}{2^L}">λ = N / 2<sup>L</sup></span><strong id="pois-lambda">1</strong>
+</div>
+<p aria-live="polite" id="pois-description"></p>
+<p class="micro">Augmenter L d’une unité divise λ par deux. Augmenter N et L ensemble peut laisser la même loi de comparaison.</p>
+</div>
+<div>
+<div aria-label="Distribution de Poisson" class="chart" id="poisson-chart" role="img"></div>
+<div class="probability-callout">
+<span>Probabilité de ne voir aucune plage</span><strong id="pois-zero">36,8 %</strong>
+</div>
+<div aria-live="polite" class="hundred-games" id="hundred-games"></div>
+</div>
+</div>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>Quelle sera la plus longue série ?</h3>
+<p>Pour compter 1 024 nombres, on peut doubler 1 dix fois : 1, 2, 4, 8… jusqu’à 1 024. Ce nombre de doublements s’écrit log₂ 1 024 = 10. Le mot <strong>logarithme</strong> désigne ce calcul inverse.</p>
+<p>Le premier article situe la longueur maximale autour de ce nombre de doublements, lorsque la taille de la suite augmente. C’est un ordre de grandeur, pas une longueur garantie pour chaque partie.</p>
+<h3>Une série porte trois informations.</h3>
+<p>Où commence-t-elle ? De combien dépasse-t-elle la longueur demandée ? Est-elle positive ou négative ? Une série de longueur 12, lorsque l’on exige au moins 10 signes, a <strong>2 signes supplémentaires</strong>. Les mathématiciens appellent cela un « excès de 2 ».</p>
+<p>Dans le graphique, relever l’exigence garde seulement les points assez hauts. Les points retirés reviennent si vous baissez le curseur : vous examinez toujours la même situation.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · théorèmes 1.1–1.2, pp. 3–4 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">UN MÊME CHAMP, PLUSIEURS SEUILS</span><button class="button small" id="marks-reset">Redistribuer les points ↻</button>
+</div>
+<p class="try-this"><strong>Relevez l’exigence, puis redescendez.</strong> Les points grisés réapparaissent : vous examinez toujours le même ensemble.</p><label class="range-label">Signes supplémentaires exigés<output id="marks-h-value">0</output><input id="marks-h" max="5" min="0" type="range" value="0"/></label><div aria-label="Champ de Poisson marqué et points retenus au seuil" class="chart" id="marks-chart" role="img"></div>
+<p aria-live="polite" id="marks-description"></p>
+<p class="micro">Ces points sont générés par le modèle simple de Poisson : 24 points en moyenne, sur 256 positions, avec un signe + ou − au hasard. Leurs hauteurs représentent les signes supplémentaires. Il ne s’agit pas d’un tirage de la suite multiplicative.</p>
+</div>
+</div>
+<details class="explore-panel" id="explorer-phase"><summary><span><span class="disclosure-kicker">Pour aller plus loin</span><strong>Pourquoi la courbe fait-elle des dents de scie ?</strong><small>Une longueur se compte en cases entières. Cela laisse une trace entre deux doublements.</small></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body"><div class="split below">
+<div class="prose">
+<h3>Pourquoi la courbe fait-elle des dents de scie ?</h3>
+<p>Une série peut compter 12 ou 13 cases, jamais 12,4. Choisissons comme longueur de référence le nombre de doublements de N, arrondi à l’entier inférieur.</p>
+<p>Tant que cette longueur reste à 12, agrandir la suite ajoute des occasions de trouver une série. Au passage à 13, l’exigence devient plus forte : le nombre moyen attendu est divisé par deux. Puis il remonte de nouveau.</p>
+<p>La position où l’on se trouve entre deux doublements s’appelle la <button class="term" data-term="reseau">phase du réseau</button>. Cette petite oscillation fait partie du résultat mathématique ; elle ne disparaît pas simplement parce qu’on observe beaucoup de nombres.</p>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">LA PHASE : GRANDIR ENTRE DEUX DOUBLEMENTS</span></div>
+<label class="range-label">Nombre de positions N<output id="phase-t-value">13,40</output><input id="phase-t" max="1600" min="1200" type="range" value="1340"/></label><div aria-label="Intensité mobile lorsque le seuil est la partie entière du logarithme" class="chart" id="phase-chart" role="img"></div>
+<p aria-live="polite" id="phase-reading"></p>
+<p class="micro">Choix illustré : L = ⌊log₂N⌋. La courbe montre l’enveloppe théorique en log₂N ; le point utilise un entier N effectivement calculé. Elle ne représente pas un nouveau tirage aléatoire.</p>
+</div>
+</div></div></details>
+<details class="expert-panel" id="approfondissement-3"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Le résultat porte sur un réseau commun</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<div class="formula" data-tex="\begin{aligned}&amp;d_{\mathrm{TV}}\!\left(\mathcal L\big((K^s_{x,e})_{x,e,s}\big),\ \bigotimes_{x,e,s}\operatorname{Pois}\!\left(2^{-L-e-2}\right)\right)\\ &amp;\qquad\le \exp\!\left[-\left(\frac{1}{\sqrt 2}+o_C(1)\right)\sqrt{\log N\,\log\log N}\right].\end{aligned}">d<sub>TV</sub>(𝓛((K<sup>s</sup><sub>x,e</sub>)<sub>x,e,s</sub>), ⊗<sub>x,e,s</sub> Pois(2<sup>−L−e−2</sup>)) ≤ exp[−(1/√2 + o<sub>C</sub>(1)) √(log N · log log N)].</div>
+<p>Uniformément pour <span class="inline-math">|L−log₂N|≤C</span>, avec <span class="inline-math">x∈[N,2N)∩ℤ</span>, <span class="inline-math">e≥0</span>, <span class="inline-math">s∈{±1}</span>. On garde le paramètre mobile <span class="inline-math">λ<sub>N</sub></span> : comme L est entier, <span class="inline-math">λ<sub>N</sub></span> peut osciller ; le théorème conserve ce paramètre mobile sans supposer sa convergence. Après remise à l’échelle des positions, le processus ponctuel diffus est une limite <em>faible</em>. On ne revendique pas une convergence en variation totale d’une grille déterministe vers des positions continues. Le théorème 1.2 donne aussi, presque sûrement, <span class="inline-math">R<sub>M</sub> = log₂M + O(log log M)</span>. Pour l’excès exact, la masse est <span class="inline-math">2<sup>−e−1</sup></span> ; pour le dépassement d’au moins h, elle est <span class="inline-math">2<sup>−h</sup></span>.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>La loi de Poisson décrit les possibilités autour d’une moyenne.</p></div><div class="next-chapter"><p>Le modèle simple décrit les longues séries malgré les liens arithmétiques. Pour comprendre pourquoi, regardons ce que la preuve doit contrôler.</p><a href="#methode">Entrer dans la méthode<span aria-hidden="true">→</span></a></div></div></div></section>
+<section aria-labelledby="h-methode" class="chapter wrap" data-chapter-title="Compter ce qui empêche l’indépendance." id="methode">
+<div class="section-heading">
+<span class="section-number">04 /</span><div>
+<p class="eyebrow">Dans les coulisses de la preuve</p>
+<h2 id="h-methode">Compter ce qui empêche l’indépendance.</h2>
+</div>
+</div><p class="chapter-question">Pourquoi les liens entre les nombres ne font-ils pas échouer la comparaison ?</p>
+<div class="split">
+<div class="prose">
+<p class="lead">Pour comprendre pourquoi le modèle simple fonctionne, il faut d’abord repérer les liens cachés entre les nombres.</p>
+<p>Regardez 6 = 2 × 3, 10 = 2 × 5 et 15 = 3 × 5. En les multipliant, chaque nombre premier apparaît deux fois. Leurs résultats aléatoires se compensent donc par paires : <span class="inline-math">f(6)f(10)f(15)=+1</span>, quels que soient les lancers.</p>
+<p>Une fois les résultats de 6 et de 10 connus, celui de 15 est imposé. Voilà un exemple concret de <strong>dépendance</strong>. L’éloignement de deux portions de la suite ne suffit pas, à lui seul, à assurer leur indépendance.</p>
+<p>La preuve recense les relations de ce genre entre deux groupes de nombres consécutifs. Elle révèle aussi d’abord les résultats des petits nombres premiers, puis étudie le hasard encore disponible sur les grands premiers.</p>
+<div class="takeaway">
+<span>Ce que la preuve apporte</span>Elle ne prétend pas que les liens disparaissent. Elle montre que leur effet cumulé sur les longues séries est assez petit pour permettre la comparaison de Poisson.</div>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">UNE RELATION INVISIBLE DANS LES DISTANCES</span></div>
+<p>Inversez volontairement le résultat de 2, 3 ou 5. Deux résultats changent à chaque inversion ; le produit des trois reste toujours +1.</p>
+<div class="prime-controls arrow-navigation" id="relation-controls"></div>
+<div class="relation-triangle" id="relation-figure"></div>
+<div class="formula" data-tex="\begin{aligned}6\times10\times15&amp;=30^2,\\ f(6)\times f(10)\times f(15)&amp;=+1.\end{aligned}">6 × 10 × 15 = 30²<br/>f(6) × f(10) × f(15) = +1</div>
+<p class="micro">Chacune des trois paires est indépendante dans cet exemple ; le triplet ne l’est pas. Une corrélation entre deux valeurs ne détecte donc pas toutes les contraintes.</p>
+</div>
+</div>
+<div aria-label="Chemin de preuve" class="proof-route">
+<article><span>01</span><h3>Traduire</h3>
+<p>Écrire chaque nombre avec ses facteurs premiers. Les facteurs répétés deux fois se compensent.</p></article><article><span>02</span><h3>Compter</h3>
+<p>Borner le nombre total de liens cachés entre deux groupes de nombres consécutifs.</p></article><article><span>03</span><h3>Révéler</h3>
+<p>Connaître d’abord les signes des petits nombres premiers, puis repérer les événements qui partagent encore un grand nombre premier.</p></article><article><span>04</span><h3>Comparer</h3>
+<p>Montrer que les erreurs restantes deviennent petites pour les longues séries étudiées.</p></article>
+</div>
+<details class="expert-panel" id="approfondissement-4"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Deux coûts différents : relations et chevauchements</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Le théorème 3.1 de Paper C donne, pour <span class="inline-math">B=L+1</span>, la borne uniforme</p>
+<div class="formula" data-tex="R_2(N,L)\ll_{\beta_-,\beta_+,\varepsilon}N^{\varepsilon}\left(N^{5/3}+N^{2/3}2^B\right).">R₂(N,L) ≪<sub>β₋,β₊,ε</sub> N<sup>ε</sup>(N<sup>5/3</sup> + N<sup>2/3</sup> 2<sup>B</sup>).</div>
+<p>À l’échelle critique, elle est <span class="inline-math">O<sub>C,ε</sub>(N<sup>5/3+ε</sup>)</span>. Cette borne vaut pour une bande fixée β₋ log N ≤ B ≤ β₊ log N, avec 0&lt;β₋&lt;β₊ ; sa constante peut dépendre de β₋, β₊ et ε. La somme porte sur les paires ordonnées x,y∈[N,2N) avec |x−y|&gt;L et pèse chaque paire par <span class="inline-math">2<sup>ρ(x,y)</sup>−1</span>, où <span class="inline-math">ρ = dim ker(A<sub>x,y</sub><sup>T</sup>)</span> est la dimension de l’espace des relations homogènes. L’exposant 5/3 est une borne supérieure, sans affirmation d’optimalité. Il faut contrôler leur nombre pondéré, et non simplement le nombre de paires ayant une relation. La variante plafonnée exploite l’exclusion mutuelle des mots distincts au même site.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · théorème 3.1, p. 13 ↗</a></div></details>
+<details class="expert-panel" id="approfondissement-5"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Conditionner exige une erreur relative</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Si deux lois jointes sont à distance de variation totale au plus ε et si l’événement sur lequel on conditionne a une probabilité cible p&gt;ε, le lemme 6.3 borne la distance des lois conditionnelles par <span class="inline-math" data-tex="\frac{\varepsilon}{p}">ε/p</span>. Pour obtenir une convergence, il faut donc <span class="inline-math" data-tex="\frac{\varepsilon}{p}\to0">ε/p→0</span>, et non seulement ε→0. Le résultat s’applique aussi à une trajectoire future de seuils : l’observation ne doit pas être trop rare relativement à la précision disponible.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · lemme 6.3 et théorème 6.4, pp. 46–47 ↗</a><p>Pour les vérifications arithmétiques détaillées : <a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">compagnon, annexe A (Runge–Pell)</a> et <a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">annexe B (coupure et lissage)</a>.</p></div></details>
+<details class="explore-panel" id="explorer-mots"><summary><span><span class="disclosure-kicker">Pour aller plus loin</span><strong>Et si l’on cherchait un motif plutôt qu’une série ?</strong><small>Comparer des signes répétés à un mot recherché dans un texte.</small></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body"><div class="split below">
+<div class="prose">
+<h3>Chercher un motif, comme dans un texte.</h3>
+<p>Quand on cherche « AAAA » dans « AAAAA », deux occurrences partagent des lettres. En revanche, le motif « BAAA » ne peut pas recommencer avant que le précédent soit terminé.</p>
+<p>Remplacez A par + et B par − : c’est exactement le problème du labo. Un <strong>mot</strong> est ici simplement une liste de signes prescrits. Un <strong>dictionnaire</strong> est une collection de mots que l’on cherche en même temps.</p>
+<p>L’article contrôle séparément ces recouvrements visibles et les liens arithmétiques cachés. Il permet même au dictionnaire de grandir avec la taille de la suite, sous les conditions précisées dans l’encadré spécialiste.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · théorème 1.3, p. 5 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">LABO 04 · UN MOT PEUT-IL SE RECOUVRIR ?</span></div>
+<label>Mot de 2 à 12 signes + ou −<input aria-describedby="word-help word-result" class="word-input" id="word-input" maxlength="12" spellcheck="false" type="text" value="-+++"/></label><div class="presets">
+<button class="chip" data-word="-+++">−+++</button><button class="chip" data-word="++++">++++</button><button class="chip" data-word="+-+-">+−+−</button>
+</div>
+<p class="micro" id="word-help">Regardez les cases où les deux copies se superposent : demandent-elles toutes le même signe ?</p>
+<div class="word-overlaps" id="word-overlaps"></div>
+<p aria-live="polite" id="word-result"></p>
+</div>
+</div><details class="expert-panel" id="approfondissement-6"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Ce que le labo illustre, et ce que le théorème exige</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<p>Pour des constantes fixées C&gt;0 et 0&lt;η&lt;1/2, et un dictionnaire déterministe <span class="inline-math">W<sub>N</sub>⊂{±1}<sup>B<sub>N</sub></sup></span> de taille <span class="inline-math">m<sub>N</sub></span>, on demande <span class="inline-math">m<sub>N</sub>≤N<sup>1/2−η</sup></span>, <span class="inline-math">|B<sub>N</sub>−log₂(Nm<sub>N</sub>)|≤C</span> et</p>
+<div class="formula" data-tex="\Omega(W_N)=\frac{1}{m_N}\sum_{w,v\in W_N}\sum_{1\le d&lt;B_N}2^{-d}\,\mathbf 1_{\{w\sim_d v\}}\longrightarrow0.">Ω(W<sub>N</sub>) = (1/m<sub>N</sub>) ∑<sub>w,v∈W<sub>N</sub></sub> ∑<sub>1≤d&lt;B<sub>N</sub></sub> 2<sup>−d</sup> 1{w ∼<sub>d</sub> v} → 0.</div>
+<p>Alors le champ des occurrences se compare en variation totale à des coordonnées indépendantes <span class="inline-math">Pois(2<sup>−B<sub>N</sub></sup>)</span>. Le nombre de mots peut croître tandis que l’intensité totale <span class="inline-math">Nm<sub>N</sub>2<sup>−B<sub>N</sub></sup></span> reste bornée. L’exposant 1/2 est une condition suffisante, pas une frontière prouvée. Le labo calcule seulement les auto-chevauchements d’un mot ; un dictionnaire exige aussi les chevauchements entre mots distincts. Une longueur fixe dans ce labo ne constitue pas à elle seule un régime asymptotique admissible.</p></div></details></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>La preuve mesure les effets des liens cachés.</p></div><div class="next-chapter"><p>Il reste un endroit où l’arithmétique procure un avantage très visible : le tout début de la suite.</p><a href="#frontiere">Découvrir le rôle du début<span aria-hidden="true">→</span></a></div></div><aside class="corpus-math-note"><strong>Une liste choisie avant d’observer la bande</strong><p>Une liste de motifs construite pour provoquer des coïncidences demande des garanties fortes. Si la liste est choisie au hasard avant de regarder les signes, la plupart des listes évitent ces configurations défavorables. On garde ensuite cette même liste fixe pendant la comparaison : changer de liste à chaque observation répondrait à une autre question.</p><a href="paper-c.html#typical-dictionaries">Le théorème sur les dictionnaires typiques · EN</a></aside></section>
+<section aria-labelledby="h-frontiere" class="chapter" data-chapter-title="Deux façons de produire l’exceptionnel." id="frontiere"><div class="wrap">
+<div class="section-heading">
+<span class="section-number">05 /</span><div>
+<p class="eyebrow">Le second résultat phare</p>
+<h2 id="h-frontiere">Deux façons de produire l’exceptionnel.</h2>
+</div>
+</div><p class="chapter-question">Pourquoi le tout début de la suite peut-il être un endroit privilégié ?</p>
+<div class="split">
+<div class="prose">
+<p class="lead">Une série exceptionnellement longue peut profiter de beaucoup d’occasions… ou d’un avantage particulier tout au début.</p>
+<p>À l’intérieur d’une très longue suite, de nombreuses positions peuvent accueillir une série. C’est comme multiplier les occasions de gagner un événement rare.</p>
+<p>À la position 1, il existe un raccourci arithmétique. Pour que les dix premiers résultats soient tous +1, seules quatre pièces doivent tomber sur pile : celles de 2, 3, 5 et 7. Les autres résultats suivent automatiquement par multiplication.</p>
+<div class="everyday-example">
+<span>Pourquoi le début est spécial</span><p>Quatre piles donnent une chance sur 16. Dix pièces séparées toutes sur pile ne donneraient qu’une chance sur 1 024. La règle arithmétique rend donc cette série initiale beaucoup moins coûteuse.</p>
+</div>
+<p>Le symbole <button class="term" data-term="pi">π(L)</button> compte les nombres premiers jusqu’à L. Au tout début, la chance exacte d’avoir L résultats positifs vaut <span class="inline-math">2<sup>−π(L)</sup></span>. L’article quantifie la compétition avec toutes les occasions situées plus loin.</p>
+<a class="source" href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Paper C · théorème 1.2, p. 4 ↗</a>
+</div>
+<div class="experiment">
+<div class="experiment-heading">
+<span class="figure-label">D’OÙ VIENT UNE SÉRIE EXCEPTIONNELLE ?</span><span class="badge">Modèle des deux origines</span>
+</div>
+<p class="conditional-intro">Nous regardons seulement les expériences où une série aussi longue existe. <strong>Parmi ces expériences</strong>, quelle part vient du début de la suite ?</p>
+<p class="try-this">Gardez la longueur et déplacez le curseur de droite : vous changez le nombre d’occasions de trouver une série plus loin dans la suite.</p><div class="controls two">
+<label>Longueur L <output id="boundary-l-value">64</output><input id="boundary-l" max="160" min="64" type="range" value="64"/></label><label>Favoriser le bloc ← → favoriser l’origine<output id="boundary-s-value">0</output><input id="boundary-s" max="6" min="-6" type="range" value="0"/></label>
+</div>
+<div aria-hidden="true" class="mixture-bar">
+<div id="boundary-share"></div>
+<div id="bulk-share"></div>
+</div>
+<div class="mixture-labels">
+<span><i class="boundary-dot"></i> À l’origine <strong id="boundary-weight"></strong></span><span><i class="bulk-dot"></i> Dans le bloc <strong id="bulk-weight"></strong></span>
+</div>
+<div aria-label="Mélange d’une masse à l’origine et d’une répartition uniforme" class="chart" id="boundary-chart" role="img"></div>
+<p aria-live="polite" id="boundary-reading"></p>
+<details class="control-detail"><summary>Comment ces paramètres sont-ils reliés ?</summary><div class="formula" data-tex="s=L-\log_2 M-\pi(L)">s = L − log₂ M − π(L)</div><p id="boundary-parameters"></p></details><p class="micro">Poids de comparaison conditionnels à l’existence d’une plage. Le trait bleu représente la chance d’un départ à l’origine ; la zone orange représente des départs répartis dans le bloc. Ces deux objets se lisent différemment : une masse en un point et une densité sur un intervalle. Le modèle utilise <span class="inline-math">M = 2<sup>L−π(L)−s</sup></span>.</p>
+</div>
+</div>
+<div class="split below">
+<div class="prose">
+<h3>À chaque case… ou seulement aux nombres premiers ?</h3>
+<p>Dans le modèle simple du bloc, chaque case supplémentaire doit encore être de la bonne couleur : chaque étape coûte un facteur deux.</p>
+<p>Au tout début de la suite, les nombres composés n’exigent pas une nouvelle pièce. Si les dix premières valeurs sont positives, passer à 11 exige un nouveau pile ; passer ensuite à 12 ne demande rien de plus, puisque 12 = 2 × 2 × 3.</p>
+<p>C’est pourquoi la courbe bleue descend aux nombres premiers et reste plate entre eux. La courbe orange descend à chaque entier. Les deux mécanismes ont chacun leur propre « horloge ».</p>
+</div>
+<div class="experiment">
+<div class="experiment-heading"><span class="figure-label">PROLONGER DE e SIGNES</span></div>
+<div aria-label="Comparaison des queues d’excès au bord et dans le bloc" class="chart" id="overshoot-chart" role="img"></div>
+<p class="micro">Bleu : <span class="inline-math">2<sup>−(π(L+e)−π(L))</sup></span>, probabilité exacte de prolongation conditionnelle de la plage commençant en 1. Orange : <span class="inline-math">2<sup>−e</sup></span>, probabilité de prolongation dans le modèle simple du bloc.</p>
+</div>
+</div>
+<details class="expert-panel" id="approfondissement-7"><summary><span><span class="disclosure-kicker">Énoncé &amp; méthode</span><strong>Le régime et le centrage exacts</strong></span><span aria-hidden="true" class="disclosure-icon">+</span></summary><div class="disclosure-body">
+<div class="formula" data-tex="\begin{aligned}\mathbb P(R_M\ge L)&amp;=2^{-\pi(L)}+M2^{-L}\\&amp;\quad+o\!\left(2^{-\pi(L)}+M2^{-L}\right).\end{aligned}">ℙ(R<sub>M</sub> ≥ L) = 2<sup>−π(L)</sup> + M2<sup>−L</sup> + o(2<sup>−π(L)</sup> + M2<sup>−L</sup>).</div>
+<p>Hypothèses : <span class="inline-math">L→∞</span>, <span class="inline-math">L=O(log M)</span>, <span class="inline-math">M2<sup>−L</sup>→0</span>. Si <span class="inline-math">s=L−log₂M−π(L)</span> converge, la première position normalisée, conditionnellement à l’existence, tend vers <span class="inline-math" data-tex="\frac{1}{1+2^{-s}}\delta_0+\frac{2^{-s}}{1+2^{-s}}\operatorname{Leb}_{[0,1]}">(1+2<sup>−s</sup>)<sup>−1</sup>δ₀ + 2<sup>−s</sup>(1+2<sup>−s</sup>)<sup>−1</sup>Leb<sub>[0,1]</sub></span>. Le théorème 7.11 conserve les positions sur le réseau et les poids mobiles, ainsi que le signe et l’excès. Ne pas confondre la masse <em>exacte</em> de l’événement commençant en 1 avec la probabilité d’une plage quelque part dans toute la zone de bord : cette dernière requiert l’estimation relative du théorème 7.1.</p></div></details>
+<div class="chapter-ending"><div class="chapter-recap"><span>Le repère à garder</span><p>Beaucoup d’occasions, ou un avantage au départ.</p></div><div class="next-chapter"><p>Passons maintenant du lieu où apparaît une série à son histoire : quand devient-elle un record ?</p><a href="flows-intuition.html#records">Suivre les records<span aria-hidden="true">→</span></a></div></div></div><aside class="new-paper-bridge"><p class="eyebrow">Autre question du corpus · Arithmetic Clusters</p><h3>Et si les événements rares arrivaient par groupes ?</h3><p>Arithmetic Clusters étudie les sources et les dépendances que le modèle doit conserver. Cette branche peut se lire séparément du parcours des records.</p><a class="button primary" href="clusters-intuition.html">Lire le parcours Arithmetic Clusters</a><a href="flows-intuition.html#records">Continuer directement vers les records</a></aside></section>
+<section class="chapter wrap" data-chapter-title="Une bande fixe, beaucoup de cadrages." id="fixed-strip"><div class="section-heading"><span class="section-number">06 /</span><div><p class="eyebrow">Paper C V3 · Corollary 7.8a</p><h2>Une bande fixe, beaucoup de cadrages.</h2></div></div><article class="experiment" id="empirical-lab"><div class="experiment-header"><span class="model-tag">Échantillon arithmétique fini · toutes les origines</span><h3>Garder la bande. Déplacer seulement le cadre.</h3><p>On lance une fois les pièces des nombres premiers. La bande de signes obtenue reste ensuite fixe. On compte les débuts de longues séries dans un cadre de h positions candidates. L’histogramme utilise toutes les positions du cadre ; le curseur en choisit une.</p></div><div class="experiment-body"><div class="control-row"><label>Taille de la bande M<select id="empirical-size"><option>8192</option><option selected="">32768</option><option>131072</option></select></label><label>Longueur L<select id="empirical-length"><option>9</option><option selected="">10</option><option>11</option><option>12</option></select></label><label>Positions candidates par cadre h<select id="empirical-window"><option>512</option><option>1024</option><option selected="">2048</option><option>4096</option></select></label><button class="button" id="empirical-reset">Relancer les pièces</button></div><label>Origine du cadre u : <output id="empirical-origin-value">0</output><input id="empirical-origin" max="30000" min="0" style="width:100%" type="range" value="0"/></label><div class="chart" id="empirical-strip"></div><p aria-live="polite" class="lab-caption" id="empirical-reading"></p><div class="two-charts"><div class="chart" id="empirical-law"></div><div><div class="stats"><div class="stat"><span>Total de ce cadre</span><strong id="empirical-count"></strong></div><div class="stat"><span>Origines évaluées</span><strong id="empirical-origins"></strong></div><div class="stat"><span>Moyenne cible h2⁻ᴸ</span><strong id="empirical-mean"></strong></div><div class="stat"><span>TV exacte de l’histogramme fini</span><strong id="empirical-tv"></strong></div></div><div class="chart-key"><span><i class="key-line"></i>Fréquences sur la bande fixe</span><span><i class="key-dot"></i>Référence Poisson</span></div></div></div><p class="method-note">Cette expérience finie illustre ce qui reste aléatoire. Elle ne certifie pas numériquement le corollaire 7.8a : celui-ci fixe α et τ et impose des échelles dyadiques et des fenêtres presque macroscopiques. Ici, on choisit directement M, L et h. La TV tient compte de toute la masse de Poisson absente de l’histogramme.</p><p><a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Corollary 7.8a ↗</a> · <a href="https://zenodo.org/records/22872154" rel="noopener" target="_blank">Ce que la carte complète conserve ↗</a></p></div></article></section><div class="wrap corpus-next"><a href="paper-c.html"><small>Même sujet · énoncés formels</small><strong>Paper C · Recherche en anglais</strong></a><a href="flows-intuition.html"><small>Poursuivre la lecture</small><strong>Lattice Poisson Flows →</strong></a></div></main>
+<dialog aria-labelledby="glossary-title" id="glossary-dialog"><div class="dialog-heading">
+<div>
+<p class="eyebrow">Les mots du parcours</p>
+<h2 id="glossary-title">Le lexique</h2>
+</div>
+<button autofocus="" class="button small" id="glossary-close">Fermer ×</button>
+</div>
+<div id="glossary-content"></div></dialog>
+<footer class="corpus-footer"><div class="corpus-shell"><p>Brice Pouly · Éditions publiques · 21 septembre 2026</p><nav aria-label="Ressources"><a href="sources.html">Sources et formalisation Lean</a><a download="arithmetique_du_hasard_autonome.html" href="arithmetique_du_hasard_autonome.html">Télécharger le site autonome</a></nav></div></footer></body>
+</html>

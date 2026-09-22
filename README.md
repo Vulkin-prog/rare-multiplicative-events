@@ -13,7 +13,7 @@ A static research and teaching site by Brice Pouly. The home page is the English
 | Corpus overview V1 | 10.5281/zenodo.22880994 |
 | Paper C Lean release v0.49.0 | 10.5281/zenodo.22875443 |
 
-The seven manuscript and companion PDFs in the active routes are unchanged copies of these public records. The sources page documents the Lean release separately: 89 selected declarations in seven families, relative to seven explicit literature inputs. It makes no formalization claim for the whole corpus.
+Manuscripts and technical companions are linked to their version-specific Zenodo records. No PDF files are stored in this repository or embedded in the standalone export. The sources page documents the Lean release separately: 89 selected declarations in seven families, relative to seven explicit literature inputs. It makes no formalization claim for the whole corpus.
 
 ## Routes
 
@@ -25,7 +25,7 @@ The seven manuscript and companion PDFs in the active routes are unchanged copie
 - `docs/sources.html`: exact editions, manuscript/companion links, formalization scope and BibTeX.
 - `*-intuition.html` and `*-intuition-en.html`: corresponding FR/EN guided pages. C and LPF now have separate guided scopes.
 - `docs/intuition.html`, `docs/en.html`: compatibility redirects for previously shared chapter links. Previous root research anchors also retain their destinations.
-- `docs/arithmetique_du_hasard_autonome.html`: a self-contained export of all 16 reading views, seven PDFs, fonts, styles, scripts and bibliography.
+- `docs/arithmetique_du_hasard_autonome.html`: a self-contained export of all 16 reading views, fonts, styles, scripts and bibliography. Manuscripts open on Zenodo.
 
 ## Publish with GitHub Pages
 
@@ -41,6 +41,8 @@ One-time activation by the repository owner:
 Expected public address after activation: <https://vulkin-prog.github.io/rare-multiplicative-events/>. Every later push to `main` updates the site automatically. Readers need no GitHub or ChatGPT account.
 
 All internal URLs are relative, so they work under the repository subpath. `.nojekyll` preserves the supplied static files. No domain purchase is needed.
+
+This repository was private when the transfer was completed. GitHub Pages on a private personal repository requires GitHub Pro (or another eligible plan). The repository's visibility has not been changed. See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
 ## Preview locally
 
@@ -60,7 +62,7 @@ After changing a route or asset, regenerate the standalone file:
 python3 scripts/export-standalone.py
 ```
 
-This export is tracked and published as a downloadable website asset. It uses a fresh document on each route to isolate the existing interaction engines. It preserves theme and chapter-aware language navigation, embeds PDF and BibTeX downloads, and supports legacy view parameters. External DOI/GitHub links require connectivity; reading and mathematical calculations do not.
+This export is tracked and published as a downloadable website asset. It uses a fresh document on each route to isolate the existing interaction engines. It preserves theme and chapter-aware language navigation, embeds the BibTeX download, and supports legacy view parameters. Manuscripts, DOI and GitHub links require connectivity; reading pages and mathematical calculations do not.
 
 ## Mathematical models
 
@@ -77,4 +79,8 @@ node scripts/check-clusters.cjs
 ```
 
 
-Manuscript-to-statement review covers the current public versions. Checks cover PDF checksums, local references and fragments, duplicate IDs, labelled controls, KaTeX rendering, script initialization, theme switching with blocked storage, numerical endpoints, exact finite-strip brute-force counts, seeded Monte Carlo covariance, all 16 standalone views and embedded PDF/BibTeX bytes. Browser rendering and physical-phone behavior were not directly tested; layouts and controls retain responsive and reduced-motion rules.
+The transfer checks verify local HTML/CSS references and fragments under a repository subpath, duplicate IDs, version-specific Zenodo destinations, all 16 embedded offline views, embedded BibTeX bytes and the absence of stored or embedded PDFs. The two existing numerical checks cover count moments, brute-force finite-strip counts, cluster laws, strict endpoints and covariance calculations. This transfer does not constitute a new review of the mathematical manuscripts. Browser rendering and physical-phone behavior were not directly tested; layouts and controls retain the existing responsive and reduced-motion rules.
+
+## Transfer provenance
+
+The `docs/` files derive from source commit `b952d051bfddf0fdc780a47ce8e812799af73710`, retrieved on 22 September 2026. As requested, all PDFs were excluded, manuscript links now open the corresponding Zenodo records, and the standalone export was regenerated without embedded PDFs. `.nojekyll` was added for Pages. The export and numerical-check scripts were adapted from `dist/` to `docs/`. `SITE-SHA256SUMS` records the transferred website bytes. The original hosted site is unchanged.
