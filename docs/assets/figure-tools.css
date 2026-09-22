@@ -1,0 +1,22 @@
+/* Figure tools sit outside the plot and its accessible image description. */
+.figure-tools{display:flex;justify-content:flex-end;gap:5px;flex-wrap:wrap;margin:5px 0 8px;min-width:0}
+.figure-tools[hidden]{display:none}
+.figure-tool-button{font:500 .79rem/1.35 system-ui,sans-serif;min-height:36px;border:1px solid transparent;border-radius:5px;padding:7px 10px;color:var(--corpus-muted,#536279);background:transparent;cursor:pointer}
+.figure-tool-button:hover{color:var(--corpus-blue,#174ec2);background:var(--corpus-soft,#f3f6fc);border-color:var(--corpus-line,#d4ddec)}
+.figure-tool-button:focus-visible,.figure-dialog-scroll:focus-visible,.figure-dialog select:focus-visible{outline:3px solid var(--corpus-blue,#174ec2);outline-offset:3px}
+.figure-dialog{width:calc(100% - 32px);max-width:1220px;max-height:calc(100dvh - 32px);padding:22px;border:1px solid var(--corpus-line,#d4ddec);border-radius:9px;background:var(--corpus-page,#fff);color:var(--corpus-ink,#17243a);box-shadow:0 20px 90px #0004;overflow:auto}
+.figure-dialog::backdrop{background:#071225b8}
+.figure-dialog-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.figure-dialog-heading h2{font:500 1.3rem/1.4 Georgia,serif;letter-spacing:0;margin:0;overflow-wrap:anywhere}
+.figure-dialog-heading button{flex-shrink:0;border-color:var(--corpus-line,#d4ddec);font-size:.87rem;min-height:42px}
+.figure-dialog-note{font:.87rem/1.65 system-ui,sans-serif;color:var(--corpus-muted,#536279);max-width:850px;margin:12px 0}
+.figure-dialog-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font:.85rem/1.5 system-ui,sans-serif;margin:14px 0}
+.figure-dialog-controls select{font:inherit;min-height:40px;padding:6px 10px;border:1px solid var(--corpus-line,#d4ddec);border-radius:4px;color:var(--corpus-ink,#17243a);background:var(--corpus-page,#fff)}
+.figure-dialog-controls .figure-tool-button{font-size:.85rem;min-height:40px;border-color:var(--corpus-line,#d4ddec)}
+.figure-dialog-hint{color:var(--corpus-muted,#536279);font-size:.8rem;margin-left:auto}
+.figure-dialog-scroll{max-height:65vh;overflow:auto;overscroll-behavior:contain;border:1px solid var(--corpus-line,#d4ddec);border-radius:5px;padding:12px;scrollbar-gutter:stable}
+.figure-dialog-picture{min-width:0;margin:0}
+.figure-dialog-picture>svg{display:block;max-width:none}
+.figure-tools-status{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(max-width:600px){.figure-tools{justify-content:flex-start}.figure-tool-button{min-height:44px}.figure-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px);padding:15px}.figure-dialog-heading{gap:10px}.figure-dialog-heading h2{font-size:1.12rem}.figure-dialog-hint{margin-left:0;width:100%}.figure-dialog-scroll{max-height:55vh}}
+@media print{.figure-tools,.figure-dialog,.figure-tools-status{display:none!important}}

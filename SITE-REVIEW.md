@@ -111,3 +111,13 @@ Version publiée sur GitHub Pages le 22 septembre 2026, commit `93f5b04447ea193c
 - L’export autonome est reconstruit, ouvert et testé : passage au français et réponse du curseur du modèle élémentaire. Ses 16 vues et ses ressources intégrées sont comparées aux sources par le contrôle statique. L’ouverture hors connexion depuis le disque et le comportement sur téléphone réel ne sont pas déclarés testés.
 
 Les PDF ne sont ni stockés dans le dépôt ni intégrés à l’export autonome. Les accès documentaires passent par Zenodo.
+
+## Complément du 22 septembre — navigation et outils de lecture
+
+Les notices Zenodo ont été relues : elles fournissent désormais le chapeau V1.2, Records and scale flows V2.1 et Arithmetic clusters V1.1 sous les DOI indiqués. Les titres de version, le registre du corpus et le BibTeX ont été alignés. Cette vérification des éditions ne constitue pas une nouvelle revue de toutes les preuves.
+
+Ajouts : sommaire compact avec accès aux expériences ; liens directs avec repli de copie manuel ; agrandissement de SVG figés avec zoom ; export vectoriel conservant les couleurs calculées et des métadonnées de paramètres ; valeurs de curseurs accessibles correspondant aux valeurs affichées ; trois cas comparables accessibles par boutons. Le document et le numéro de page PDF peuvent être choisis dans la page des sources, avec distinction article/compagnon et validation des limites. Les numéros sont ceux du fichier, pas nécessairement ceux imprimés dans le texte.
+
+Les sept lecteurs PDF Zenodo ont été vérifiés ; aucun PDF n’est stocké ou embarqué. Les références ambiguës à des théorèmes restent des liens vers leur notice : aucun numéro de page n’a été deviné. Les liens de figures ne sauvegardent pas le tirage aléatoire. L’export SVG ne comprend pas les légendes HTML placées hors du dessin.
+
+Les contrôles statiques, numériques et DOM ciblés ont passé, notamment les ancres, les fermetures clavier, le maintien du bouton Notation, les deux issues de la copie (autorisée/refusée), les frontières du choix de page et les redessins de graphiques sans duplication de commandes. L’export autonome est reconstruit à partir des 16 vues actuelles. Les essais sur appareil physique et lecteur d’écran restent à effectuer.

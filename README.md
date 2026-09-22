@@ -7,10 +7,10 @@ A static research and teaching site by Brice Pouly. The home page is the English
 | Text | Version-specific DOI |
 | --- | --- |
 | Long runs V3 | 10.5281/zenodo.22872154 |
-| Records and scale flows V2 | 10.5281/zenodo.22876520 |
-| Arithmetic clusters V1 | 10.5281/zenodo.22877400 |
+| Records and scale flows V2.1 | 10.5281/zenodo.22876520 |
+| Arithmetic clusters V1.1 | 10.5281/zenodo.22877400 |
 | Moving prime environments V1 | 10.5281/zenodo.22878806 |
-| Corpus overview V1 | 10.5281/zenodo.22880994 |
+| Corpus overview V1.2 | 10.5281/zenodo.22880994 |
 | Long runs Lean release v0.49.0 | 10.5281/zenodo.22875443 |
 
 Manuscripts and technical companions are linked to their version-specific Zenodo records. No PDF files are stored in this repository or embedded in the standalone export. The sources page documents the Lean release separately: 89 selected declarations in seven families, relative to seven explicit literature inputs. It makes no formalization claim for the whole corpus.
@@ -79,8 +79,18 @@ node scripts/check-clusters.cjs
 ```
 
 
-The transfer checks verify local HTML/CSS references and fragments under a repository subpath, duplicate IDs, version-specific Zenodo destinations, all 16 embedded offline views, embedded BibTeX bytes and the absence of stored or embedded PDFs. The two existing numerical checks cover count moments, brute-force finite-strip counts, cluster laws, strict endpoints and covariance calculations. The September 2026 revision also reviews the four current manuscripts, the two technical companions and the supplied overview V1.2. See [SITE-REVIEW.md](SITE-REVIEW.md) for corrections, source references, validation coverage and remaining opportunities. The public overview link still points to the published V1 record. Physical-phone behavior has not been tested.
+The transfer checks verify local HTML/CSS references and fragments under a repository subpath, duplicate IDs, version-specific Zenodo destinations, all 16 embedded offline views, embedded BibTeX bytes and the absence of stored or embedded PDFs. The two existing numerical checks cover count moments, brute-force finite-strip counts, cluster laws, strict endpoints and covariance calculations. The September 2026 revision also reviews the four current manuscripts, the two technical companions and the supplied overview V1.2. See [SITE-REVIEW.md](SITE-REVIEW.md) for corrections, source references, validation coverage and remaining opportunities. The same public records now provide overview V1.2, Records and scale flows V2.1 and Arithmetic clusters V1.1; edition labels and the bibliography follow the verified current PDF title pages. Physical-phone behavior has not been tested.
 
 ## Transfer provenance
 
-The `docs/` files derive from source commit `b952d051bfddf0fdc780a47ce8e812799af73710`, retrieved on 22 September 2026. As requested, all PDFs were excluded, manuscript links now open the corresponding Zenodo records, and the standalone export was regenerated without embedded PDFs. `.nojekyll` was added for Pages. The export and numerical-check scripts were adapted from `dist/` to `docs/`. `SITE-SHA256SUMS` records the transferred website bytes. The original hosted site is unchanged.
+The `docs/` files derive from source commit `b952d051bfddf0fdc780a47ce8e812799af73710`, retrieved on 22 September 2026. As requested, all PDFs were excluded, manuscript links now open the corresponding Zenodo records, and the standalone export was regenerated without embedded PDFs. `.nojekyll` was added for Pages. The export and numerical-check scripts were adapted from `dist/` to `docs/`. `SITE-SHA256SUMS` records the current website bytes. The original hosted site is unchanged.
+
+## Reader tools
+
+- Compact section and experiment navigation; existing chapter menus remain available.
+- Direct links to experiments with an explicit manual-copy fallback. Links locate the figure; they do not reproduce a random draw or its control settings.
+- Enlarge a figure as a frozen SVG snapshot, zoom and scroll; export the snapshot with computed colors and parameter metadata. HTML legends outside the SVG are not included.
+- Scientific slider values announced through `aria-valuetext`, plus three-case presets in the shared-source and moving-phase figures.
+- A source selector on the Sources page opens one of seven verified Zenodo PDF previews at a physical PDF page. Companion and manuscript are distinct. PDF downloads remain on Zenodo.
+
+These enhancements also ship in the regenerated standalone HTML. Reading, figures and SVG export work locally; the source reader requires internet access.
