@@ -90,7 +90,7 @@
     const menu = make('details', 'reading-tools-menu');
     const summary = make('summary');
     summary.append(make('span', 'reading-tools-title', t('On this page', 'Dans cette page')));
-    summary.append(make('span', 'reading-tools-count', sections.length + t(' sections', ' rubriques') + (figures.length ? ' · ' + figures.length + t(' figures', ' figures') : '')));
+    summary.append(make('span', 'reading-tools-count', sections.length + t(' sections', ' rubriques') + (figures.length ? ' · ' + figures.length + (figures.length === 1 ? ' figure' : ' figures') : '')));
     const chevron = make('span', 'reading-tools-chevron', '⌄');
     chevron.setAttribute('aria-hidden', 'true'); summary.append(chevron);
     const panel = make('div', 'reading-tools-panel');
