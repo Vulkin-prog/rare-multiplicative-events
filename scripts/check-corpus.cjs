@@ -11,3 +11,20 @@ const hermite=E.rankOne(2,1,.6,1);assert(Math.abs(hermite.variance-1.4)<1e-12);a
 for(let ci=-125;ci<=125;ci++)for(let zi=-200;zi<=100;zi++)for(const p of E.onePrimeDescendants(ci/100,1,.05,zi/100).descendants)assert.equal(p.hit,2*Math.abs(zi+p.k*ci)<100);
 const exact=F.finiteCovariance(10,.5),mc=F.simulate(10,.5,2000,1773);let integral=0;const steps=10000,dt=10/steps;for(let k=0;k<=steps;k++){const t=k*dt;integral+=(k===0||k===steps?1:k%2?4:2)*(10-t)*Math.exp(-Math.log(2)*t/2);}integral*=2*dt/(3*10);assert(Math.abs(exact.cVariance-integral)<1e-10);assert(Math.abs(mc.empirical.covariance[1][1]-exact.cVariance)<.45);assert.equal(F.finiteCovariance(10,0).cVariance,F.finiteCovariance(10,.8).cVariance);assert(Math.abs(F.limit.covariance-4/Math.log(2))<1e-12);
 console.log('PASS corpus: elementary count moments, brute-force fixed-strip counts, rank-one/crop laws, strict target endpoints and finite compression covariance.');
+
+// Regression: the reader and the step path must agree at entry/exit instants.
+// Comparing coordinates after an exp(log(u)) round trip used to lose a point.
+global.window={};require('../docs/assets/research-math.js');require('../docs/assets/flows-math.js');
+let eventChecks=0;
+for(const c of [2,4,8,16])for(const seed of [1,19,20260909]){
+ const cloud=window.ResearchFlows.cloud(c,seed);
+ const times=[0,3,...cloud.points.flatMap(p=>[p.entry,p.exit]).filter(t=>t>=0&&t<=3)];
+ for(const kind of ['fixed','scale']){
+  const path=cloud.path(kind);
+  for(const t of times){
+   let count=path[0][1];for(const [at,n]of path){if(at>t)break;count=n;}
+   assert.equal(cloud.at(t)[kind],count,`cloud mean ${c}, seed ${seed}, ${kind}, t=${t}`);eventChecks++;
+  }
+ }
+}
+console.log(`PASS cloud: ${eventChecks} exact event/end-point reader counts match their step paths.`);

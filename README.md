@@ -6,12 +6,12 @@ A static research and teaching site by Brice Pouly. The home page is the English
 
 | Text | Version-specific DOI |
 | --- | --- |
-| Paper C V3 | 10.5281/zenodo.22872154 |
-| Lattice Poisson Flows V2 | 10.5281/zenodo.22876520 |
-| Arithmetic Clusters V1 | 10.5281/zenodo.22877400 |
-| Moving Prime Environments V1 | 10.5281/zenodo.22878806 |
+| Long runs V3 | 10.5281/zenodo.22872154 |
+| Records and scale flows V2 | 10.5281/zenodo.22876520 |
+| Arithmetic clusters V1 | 10.5281/zenodo.22877400 |
+| Moving prime environments V1 | 10.5281/zenodo.22878806 |
 | Corpus overview V1 | 10.5281/zenodo.22880994 |
-| Paper C Lean release v0.49.0 | 10.5281/zenodo.22875443 |
+| Long runs Lean release v0.49.0 | 10.5281/zenodo.22875443 |
 
 Manuscripts and technical companions are linked to their version-specific Zenodo records. No PDF files are stored in this repository or embedded in the standalone export. The sources page documents the Lean release separately: 89 selected declarations in seven families, relative to seven explicit literature inputs. It makes no formalization claim for the whole corpus.
 
@@ -23,7 +23,7 @@ Manuscripts and technical companions are linked to their version-specific Zenodo
 - `docs/clusters.html`: prime sources and fixed environments; observation extensions are identified separately.
 - `docs/environments.html`: moving phases on a fixed finite exceptional prime set, effective profiles, spatial identification and window geometry.
 - `docs/sources.html`: exact editions, manuscript/companion links, formalization scope and BibTeX.
-- `*-intuition.html` and `*-intuition-en.html`: corresponding FR/EN guided pages. C and LPF now have separate guided scopes.
+- `*-intuition.html` and `*-intuition-en.html`: corresponding FR/EN guided pages. Long runs and Records and scale flows now have separate guided scopes.
 - `docs/intuition.html`, `docs/en.html`: compatibility redirects for previously shared chapter links. Previous root research anchors also retain their destinations.
 - `docs/arithmetique_du_hasard_autonome.html`: a self-contained export of all 16 reading views, fonts, styles, scripts and bibliography. Manuscripts open on Zenodo.
 
@@ -38,11 +38,11 @@ One-time activation by the repository owner:
 3. Select branch **main**, folder **/docs**, then **Save**.
 4. Wait for the **pages build and deployment** run to succeed. GitHub shows the published address on the same settings page.
 
-Expected public address after activation: <https://vulkin-prog.github.io/rare-multiplicative-events/>. Every later push to `main` updates the site automatically. Readers need no GitHub or ChatGPT account.
+Published address: <https://vulkin-prog.github.io/rare-multiplicative-events/>. Every later push to `main` updates the site automatically. Readers need no GitHub or ChatGPT account.
 
 All internal URLs are relative, so they work under the repository subpath. `.nojekyll` preserves the supplied static files. No domain purchase is needed.
 
-This repository was private when the transfer was completed. GitHub Pages on a private personal repository requires GitHub Pro (or another eligible plan). The repository's visibility has not been changed. See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+The repository is public and GitHub Pages is active.
 
 ## Preview locally
 
@@ -68,7 +68,7 @@ This export is tracked and published as a downloadable website asset. It uses a 
 
 Exact finite calculations, finite random arithmetic samples and limiting Poisson-target laws are labelled separately. Prime signs determine all integer signs by complete multiplicativity. Run starts exclude the initial run unless explicitly stated. Records preserve the earliest holder on ties and count an episode once when recognized. Prime-source corrections and exact environment-only removal are kept distinct from expectation centering. Moving environments keep the exceptional prime set fixed. Full covariance measures, scalar variances and total counts have different identification scopes.
 
-New models are in `assets/corpus-labs-math.js`, `moving-math.js` and `flow-compression-math.js`; their UI is in `corpus-labs.js`. Older validated C, LPF and AC demonstrators remain in their own modules. Shared navigation styles and behavior are in `corpus.css` and `corpus.js`; the public edition register is `corpus-manifest.json`.
+New models are in `assets/corpus-labs-math.js`, `moving-math.js` and `flow-compression-math.js`; their UI is in `corpus-labs.js`. The other validated Long runs, Records and scale flows and Arithmetic clusters demonstrators remain in their own modules. Shared navigation styles and behavior are in `corpus.css` and `corpus.js`; the public edition register is `corpus-manifest.json`.
 
 ## Validation
 
@@ -79,7 +79,7 @@ node scripts/check-clusters.cjs
 ```
 
 
-The transfer checks verify local HTML/CSS references and fragments under a repository subpath, duplicate IDs, version-specific Zenodo destinations, all 16 embedded offline views, embedded BibTeX bytes and the absence of stored or embedded PDFs. The two existing numerical checks cover count moments, brute-force finite-strip counts, cluster laws, strict endpoints and covariance calculations. This transfer does not constitute a new review of the mathematical manuscripts. Browser rendering and physical-phone behavior were not directly tested; layouts and controls retain the existing responsive and reduced-motion rules.
+The transfer checks verify local HTML/CSS references and fragments under a repository subpath, duplicate IDs, version-specific Zenodo destinations, all 16 embedded offline views, embedded BibTeX bytes and the absence of stored or embedded PDFs. The two existing numerical checks cover count moments, brute-force finite-strip counts, cluster laws, strict endpoints and covariance calculations. The September 2026 revision also reviews the four current manuscripts, the two technical companions and the supplied overview V1.2. See [SITE-REVIEW.md](SITE-REVIEW.md) for corrections, source references, validation coverage and remaining opportunities. The public overview link still points to the published V1 record. Physical-phone behavior has not been tested.
 
 ## Transfer provenance
 

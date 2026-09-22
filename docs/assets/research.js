@@ -97,14 +97,14 @@
   window.addEventListener('pagehide',()=>{for(const url of downloadURLs)URL.revokeObjectURL(url);});
   $('mc-export').addEventListener('click',()=>{if(!mc?.trials||mcRunning)return;downloadCSV('crossover_L'+mc.L+'_seed'+mc.seed+'_'+mc.trials+'_trials.csv',[
     ['source','L','seed','conditional_trials','M','s','alpha_exact','lambda_reference','complement_hits','initial_weight_estimate','wilson95_lower','wilson95_upper','logistic_reference','estimate_minus_reference','interval_scope'],
-    ...mc.results().map(r=>['Paper C V3; conditional arithmetic Monte Carlo',mc.L,mc.seed,r.n,r.M,r.s,r.alpha,r.lambda,r.k,r.estimate,r.low,r.high,r.theory,r.estimate-r.theory,'pointwise sampling uncertainty; shared trials'])
+    ...mc.results().map(r=>['Long runs V3; conditional arithmetic Monte Carlo',mc.L,mc.seed,r.n,r.M,r.s,r.alpha,r.lambda,r.k,r.estimate,r.low,r.high,r.theory,r.estimate-r.theory,'pointwise sampling uncertainty; shared trials'])
   ]);});
   $('k-export')?.addEventListener('click',()=>downloadCSV('leadership_variance_phase_curve.csv',[
     ['source','theta','K_signed_variance','K_positive_fraction_variance','phase_mean','deviation','displayed_deviation_times_1e7'],
-    ...kPoints.map(([theta,K])=>['LPF V2 equation 6.3; Poisson target',theta,K,K/4,R.leadershipMean,K-R.leadershipMean,1e7*(K-R.leadershipMean)])
+    ...kPoints.map(([theta,K])=>['Records and scale flows V2 equation 6.3; Poisson target',theta,K,K/4,R.leadershipMean,K-R.leadershipMean,1e7*(K-R.leadershipMean)])
   ]));
   $('dictionary-export').addEventListener('click',()=>{updateDictionary();if(!dictionary)return;const weighted=$('matrix-mode').value==='weighted',d=+$('matrix-shift').value,A=weighted?dictionary.A:dictionary.H[d],rows=[['source','matrix','shift','m','B','omega','earlier_word','later_word','entry']];
-    A.forEach((row,i)=>row.forEach((value,j)=>rows.push(['Paper C V3 equation (5.1)',weighted?'A':'H(d)',weighted?'all proper shifts':d,dictionary.m,dictionary.B,dictionary.omega,'w'+(i+1)+': '+dictionary.words[i],'w'+(j+1)+': '+dictionary.words[j],value])));
+    A.forEach((row,i)=>row.forEach((value,j)=>rows.push(['Long runs V3 equation (5.1)',weighted?'A':'H(d)',weighted?'all proper shifts':d,dictionary.m,dictionary.B,dictionary.omega,'w'+(i+1)+': '+dictionary.words[i],'w'+(j+1)+': '+dictionary.words[j],value])));
     downloadCSV('dictionary_'+(weighted?'weighted':'shift_'+d)+'_matrix.csv',rows);
   });
 

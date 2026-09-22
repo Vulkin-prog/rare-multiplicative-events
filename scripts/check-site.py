@@ -14,11 +14,15 @@ OFFLINE = 'arithmetique_du_hasard_autonome.html'
 class Page(HTMLParser):
     def __init__(self, text):
         super().__init__()
-        self.ids, self.links = set(), []
+        self.ids, self.links, self.labels, self.controls = set(), [], set(), []
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'label' and attrs.get('for'):
+            self.labels.add(attrs['for'])
+        if tag in ('input', 'select', 'textarea') and attrs.get('type') not in ('hidden', 'submit', 'button'):
+            self.controls.append(attrs)
         if 'id' in attrs:
             assert attrs['id'] not in self.ids, f"Duplicate id: {attrs['id']}"
             self.ids.add(attrs['id'])
@@ -46,6 +50,8 @@ def check_url(source, url):
 
 
 for path, page in pages.items():
+    for control in page.controls:
+        assert control.get('id') in page.labels or control.get('aria-label') or control.get('aria-labelledby'), f'{path.name}: unlabelled control {control}'
     for link in page.links:
         check_url(path, link)
 for path in ROOT.rglob('*.css'):
@@ -66,7 +72,7 @@ for filename, content in data['downloads'].items():
 manifest = json.loads((ROOT / 'assets/corpus-manifest.json').read_text())
 for item in manifest.values():
     assert 'file' not in item and 'companion' not in item, 'Local PDF reference in manifest'
-    if item['name'] != 'Paper C Lean formalization':
+    if 'Lean' not in item['name']:
         assert item['url'] == 'https://zenodo.org/records/' + item['doi'], item['url']
     if 'companion_url' in item:
         assert item['companion_url'] == item['url'], item['companion_url']

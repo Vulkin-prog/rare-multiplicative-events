@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  // Preserve research links shared when Paper C occupied the root URL.
+  // Preserve research links shared when Long runs occupied the root URL.
   const oldC=['results','relation-profile','dictionary-theorem','crossover-theorem','exponent-lab','crossover-lab','dictionary-lab','mechanism','clock-details','sources'];
   if(!window.CORPUS_OFFLINE&&document.querySelector('.overview-hero')&&/(?:\/index\.html|\/)$/i.test(location.pathname)){
     const id=location.hash.slice(1);

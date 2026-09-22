@@ -37,7 +37,7 @@
   window.addEventListener('pagehide',()=>{for(const url of downloadURLs)URL.revokeObjectURL(url);});
   $('k-export').addEventListener('click',()=>downloadCSV('leadership_variance_phase_curve.csv',[
     ['source','theta','K_signed_variance','K_positive_fraction_variance','phase_mean','deviation','displayed_deviation_times_1e7'],
-    ...kPoints.map(([theta,K])=>['LPF V2 equation 6.3; Poisson target',theta,K,K/4,R.leadershipMean,K-R.leadershipMean,1e7*(K-R.leadershipMean)])
+    ...kPoints.map(([theta,K])=>['Records and scale flows V2 equation 6.3; Poisson target',theta,K,K/4,R.leadershipMean,K-R.leadershipMean,1e7*(K-R.leadershipMean)])
   ]));
   const notation=$('notation-dialog');let notationOpener=null;
   function closeNotation(){if(typeof notation.close==='function')notation.close();else notation.removeAttribute('open');notationOpener?.focus();}
